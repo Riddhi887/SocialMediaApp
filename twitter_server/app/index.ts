@@ -9,12 +9,12 @@ export async function initServer() {
 
   app.use(bodyParser.json());
 
-  const typeDefs = `
+  const typeDefs = `#graphql
     ${User.types}
     type Query {
       ${User.queries}
     }
-  `;
+`;
 
   const resolvers = {
     Query: {
@@ -23,6 +23,7 @@ export async function initServer() {
   };
 
   const server = new ApolloServer({ typeDefs, resolvers });
+  console.log("TYPEDEFS:", typeDefs);
   await server.start();
 
   app.use("/graphql", expressMiddleware(server));

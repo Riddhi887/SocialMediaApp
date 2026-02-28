@@ -1,5 +1,5 @@
 //types of data user will hold
-export const types = `#graphql
+export const types = `
     type User{
     id : ID!
     firstName: String!
