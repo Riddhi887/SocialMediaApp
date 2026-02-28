@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { GoogleOAuthProvider} from "@react-oauth/google";
 import { Inter } from "next/font/google";
 import "./globals.css";
-
+import { Toaster} from 'react-hot-toast';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,9 +33,9 @@ export default function RootLayout({
         className={`${inter.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <GoogleOAuthProvider clientId="277128347116-4fmn8919j23o5ub5tgpa19423re3f78k.apps.googleusercontent.com">
+          <Toaster />
           {children}
         </GoogleOAuthProvider>
-       
       </body>
     </html>
   );

@@ -3,9 +3,17 @@ import bodyParser from "body-parser";
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@as-integrations/express5";
 import { User } from "./user/index";
+import cors from "cors";
 
 export async function initServer() {
   const app = express();
+
+  const corsOptions: cors.CorsOptions = {
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  };
 
   app.use(bodyParser.json());
 
@@ -14,7 +22,7 @@ export async function initServer() {
     type Query {
       ${User.queries}
     }
-`;
+  `;
 
   const resolvers = {
     Query: {
@@ -23,12 +31,13 @@ export async function initServer() {
   };
 
   const server = new ApolloServer({ typeDefs, resolvers });
-  console.log("TYPEDEFS:", typeDefs);
   await server.start();
 
-  app.use("/graphql", expressMiddleware(server));
+  // CORS for graphql route (important)
+  app.options("/graphql", cors(corsOptions));
+  app.use("/graphql", cors(corsOptions), expressMiddleware(server));
 
-  app.get("/", (req, res) => {
+  app.get("/", (_req, res) => {
     res.json({ message: "Twitter Server is running!" });
   });
 
