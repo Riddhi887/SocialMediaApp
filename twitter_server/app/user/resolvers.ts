@@ -64,25 +64,20 @@ const queries = {
             });
         }
 
-        //console.log(data);
-
-        //check if the user exist in db or not 
-        const user = await prismaClient.user.findUnique({ where: { email: data.email }, });
-
-        //if no user create one
-        if (!user) {
-            await prismaClient.user.create({
-                data: {
-                    email: data.email,
-                    firstName: data.given_name,
-                    lastName: data.family_name,
-                    profileImageURL : data.picture
-                }
-            })
-        }
-        //generate token for new user using jsonwebtoken
-        const userInDb = await prismaClient.user.findUnique({ where: { email: data.email } });
-        if (!userInDb) throw new Error('User with Email Not Found');
+        const userInDb = await prismaClient.user.upsert({
+            where: { email: data.email },
+            update: {
+                firstName: data.given_name,
+                lastName: data.family_name,
+                profileImageURL: data.picture,
+            },
+            create: {
+                email: data.email,
+                firstName: data.given_name,
+                lastName: data.family_name,
+                profileImageURL: data.picture,
+            },
+        });
 
         const userToken = JWTService.generateTokenForUser(userInDb);
 

@@ -1,6 +1,6 @@
 import * as dotenv from "dotenv";
 dotenv.config();
-console.log("DATABASE_URL:", process.env.DATABASE_URL);
+console.log("DATABASE_URL configured:", Boolean(process.env.DATABASE_URL));
 
 async function init() {
   const { initServer } = await import("../app");
