@@ -1,6 +1,7 @@
 //this file heps to generate token for the new user 
 import JWT from 'jsonwebtoken';
 import { User } from '../generated/prisma';
+import { JWTUser } from '../interfaces';
 const JWT_SECRET = process.env.JWT_SECRET;
 
 class JWTService{
@@ -10,12 +11,17 @@ class JWTService{
         }
 
         //required parameters
-        const payload = {
+        const payload : JWTUser= {
             id: user?.id,
             email: user?.email,
         };
         const token = JWT.sign(payload, JWT_SECRET); 
-        return token;
+        return token ;
+    }
+    
+    public static decodeToken(token: string) {
+         const strippedToken = token.startsWith("Bearer ") ? token.slice(7) : token;
+         return JWT.verify(token, JWT_SECRET) as JWTUser;
     }
 }
 

@@ -3,6 +3,8 @@ import bodyParser from "body-parser";
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@as-integrations/express5";
 import { User } from "./user/index";
+import JWTService from "../src/services/jwt";
+import { GraphqlContext } from "../src/interfaces";
 
 export async function initServer() {
   const app = express();
@@ -39,10 +41,27 @@ export async function initServer() {
     },
   };
 
-  const server = new ApolloServer({ typeDefs, resolvers });
+  const server = new ApolloServer<GraphqlContext>({ typeDefs, resolvers });
   await server.start();
 
-  app.use("/graphql", expressMiddleware(server));
+  app.use(
+    "/graphql",
+    expressMiddleware(server, {
+      context: async ({ req, res }) => {
+        const token = req.headers.authorization.split('Bearer ')[1];
+        let user = undefined;
+        if (token) {
+        try {
+          user = JWTService.decodeToken(token);
+        } catch (err) {
+          // Invalid or non-app token (e.g. Google OAuth token) — treat as unauthenticated
+          user = undefined;
+          }
+        }
+  return { user };
+},
+    })
+  );
 
   app.get("/", (_req, res) => {
     res.json({ message: "Twitter Server is running!" });
