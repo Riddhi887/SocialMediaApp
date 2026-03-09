@@ -48,6 +48,9 @@ export default function Home() {
     toast.success("Verification Successful");
 
     console.log(verifyGoogleToken);
+
+    //if token exist store it in local storage
+    if (verifyGoogleToken) window.localStorage.setItem("__twitter_token", verifyGoogleToken);
     
   },
     []);

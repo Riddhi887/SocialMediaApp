@@ -1,3 +1,13 @@
-import { GraphQLClient } from "graphql-request";
+import { GraphQLClient } from "graphql-request"; 
 
-export const graphqlClient = new GraphQLClient("http://localhost:8000/graphql");
+const isClient = typeof window !== 'undefined'; //if server side rendered page then the Bearer token become false 
+
+export const graphqlClient = new GraphQLClient("http://localhost:8000/graphql", {
+
+    //this snippet must only be rendered if you are on client 
+    headers: () => ({
+        Authorization : isClient ?  `Bearer ${window.localStorage.getItem('__twitter_token')}` : "",
+    }),
+        
+
+});
