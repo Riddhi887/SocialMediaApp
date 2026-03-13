@@ -59,6 +59,8 @@ export default function Home() {
   return (
     <div>
       <div className="grid grid-cols-12 h-screen w-screen px-35 py-0.5">
+
+        {/* Left Sidebar */}
         <div className="col-span-2 flex flex-col justify-start py-0.5">
           <div className="text-3xl h-fit w-fit hover:bg-gray-900 rounded-full p-2.5 cursor-pointer transition-all">
             <FaXTwitter />
@@ -77,7 +79,6 @@ export default function Home() {
           <button className="mt-4 bg-white hover:bg-gray-200 rounded-3xl px-10 py-3 font-semibold text-black flex items-center justify-center">
             Post
           </button>
-
           {user && (
             <div className="mt-auto mb-4 flex items-center gap-3 hover:bg-gray-900 rounded-2xl px-3 py-2 cursor-pointer transition-all w-full">
               {user.profileImageURL && (
@@ -98,12 +99,42 @@ export default function Home() {
           )}
         </div>
 
+        {/* Feed */}
         <div className="col-span-7 border-l border-r border-slate-700 ml-15 mr-12">
+          {/* Input Text Feed card */}
+          <div className="border border-r-0 border-l-0 border-b-0 border-gray-600 p-5 transition-all">
+            <div className="flex gap-4">
+              <div className="flex-shrink-0">
+                {user?.profileImageURL && (
+                  <Image
+                    src={user.profileImageURL}
+                    alt="user-image"
+                    height={40}
+                    width={40}
+                    className="rounded-full"
+                  />
+                )}
+              </div>
+              <div className="flex-1">
+                <textarea
+                  className="w-full bg-transparent outline-none text-white text-xl resize-none placeholder-gray-500 border-b-1 border-gray-500"
+                  rows={3}
+                  placeholder="What's happening?"
+                />
+                <div className="flex justify-end mt-2">
+                  <button className="bg-gray-400 text-black font-semibold rounded-full px-5 py-2 transition-all">
+                    Post
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
           <FeedCard />
           <FeedCard />
           <FeedCard />
         </div>
 
+        {/* Right Panel */}
         <div className="col-span-3 p-5">
           {!user && (
             <div className="p-4 bg-slate-900 rounded-lg">
@@ -117,6 +148,7 @@ export default function Home() {
             </div>
           )}
         </div>
+
       </div>
     </div>
   );
