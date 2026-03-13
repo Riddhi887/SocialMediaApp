@@ -1,15 +1,21 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  //give image (avatar) config
+  turbopack: {
+    root: __dirname,  
+  },
   images: {
     remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+      },
       {
         protocol: "https",
         hostname: "avatars.githubusercontent.com",
       },
     ],
-  }
+  },
 };
 
 export default nextConfig;

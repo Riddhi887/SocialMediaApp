@@ -1,0 +1,2710 @@
+(globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push([typeof document === "object" ? document.currentScript : undefined,
+"[project]/twitter_client/node_modules/@lobehub/ui/es/Flex/utils.mjs [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "getCssValue",
+    ()=>getCssValue,
+    "getFlexDirection",
+    ()=>getFlexDirection,
+    "isHorizontal",
+    ()=>isHorizontal,
+    "isSpaceDistribution",
+    ()=>isSpaceDistribution
+]);
+//#region src/Flex/utils.ts
+const getFlexDirection = (direction, isHorizontal$1)=>{
+    if (isHorizontal$1) return "row";
+    switch(direction){
+        case "horizontal":
+            return "row";
+        case "horizontal-reverse":
+            return "row-reverse";
+        case "vertical":
+        default:
+            return "column";
+        case "vertical-reverse":
+            return "column-reverse";
+    }
+};
+const isSpaceDistribution = (distribution)=>{
+    if (!distribution) return;
+    return [
+        "space-between",
+        "space-around",
+        "space-evenly"
+    ].includes(distribution);
+};
+const isHorizontal = (direction, isHorizontal$1)=>getFlexDirection(direction, isHorizontal$1) === "row";
+const getCssValue = (value)=>typeof value === "number" ? `${value}px` : value;
+;
+ //# sourceMappingURL=utils.mjs.map
+}),
+"[project]/twitter_client/node_modules/@lobehub/ui/es/Flex/FlexBasic.mjs [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>FlexBasic_default
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$utils$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/ui/es/Flex/utils.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/jsx-runtime.js [app-client] (ecmascript)");
+'use client';
+;
+;
+;
+//#region src/Flex/FlexBasic.tsx
+const FlexBasic = ({ visible, flex, gap, direction, horizontal, align, justify, distribution, height, width, allowShrink, padding, paddingInline, paddingBlock, prefixCls, as: Container = "div", className, style, children, wrap, ref, ...props })=>{
+    const justifyContent = justify || distribution;
+    const calcWidth = ()=>{
+        if ((0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$utils$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isHorizontal"])(direction, horizontal) && !width && (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$utils$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isSpaceDistribution"])(justifyContent)) return "100%";
+        return (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$utils$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getCssValue"])(width);
+    };
+    const finalWidth = calcWidth();
+    const mergedStyle = {
+        ...flex !== void 0 ? {
+            "--lobe-flex": String(flex)
+        } : {},
+        ...direction || horizontal ? {
+            "--lobe-flex-direction": (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$utils$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getFlexDirection"])(direction, horizontal)
+        } : {},
+        ...wrap !== void 0 ? {
+            "--lobe-flex-wrap": wrap
+        } : {},
+        ...justifyContent !== void 0 ? {
+            "--lobe-flex-justify": justifyContent
+        } : {},
+        ...align !== void 0 ? {
+            "--lobe-flex-align": align
+        } : {},
+        ...finalWidth !== void 0 ? {
+            "--lobe-flex-width": finalWidth
+        } : {},
+        ...height !== void 0 ? {
+            "--lobe-flex-height": (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$utils$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getCssValue"])(height)
+        } : {},
+        ...padding !== void 0 ? {
+            "--lobe-flex-padding": (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$utils$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getCssValue"])(padding)
+        } : {},
+        ...paddingInline !== void 0 ? {
+            "--lobe-flex-padding-inline": (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$utils$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getCssValue"])(paddingInline)
+        } : {},
+        ...paddingBlock !== void 0 ? {
+            "--lobe-flex-padding-block": (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$utils$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getCssValue"])(paddingBlock)
+        } : {},
+        ...gap !== void 0 ? {
+            "--lobe-flex-gap": (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$utils$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getCssValue"])(gap)
+        } : {},
+        ...allowShrink ? {
+            minWidth: 0
+        } : {},
+        ...style
+    };
+    const baseClassName = "lobe-flex";
+    const mergedClassName = [
+        baseClassName,
+        visible === false ? `${baseClassName}--hidden` : void 0,
+        prefixCls ? `${prefixCls}-flex` : void 0,
+        className
+    ].filter(Boolean).join(" ");
+    return /* @__PURE__ */ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsx"])(Container, {
+        ref,
+        ...props,
+        className: mergedClassName,
+        style: mergedStyle,
+        children
+    });
+};
+var FlexBasic_default = (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(FlexBasic);
+;
+ //# sourceMappingURL=FlexBasic.mjs.map
+}),
+"[project]/twitter_client/node_modules/@lobehub/ui/es/Flex/Center.mjs [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>Center_default
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$FlexBasic$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/ui/es/Flex/FlexBasic.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/jsx-runtime.js [app-client] (ecmascript)");
+;
+;
+//#region src/Flex/Center.tsx
+const Center = ({ children, ref, ...props })=>/* @__PURE__ */ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsx"])(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$FlexBasic$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+        ...props,
+        align: "center",
+        justify: "center",
+        ref,
+        children
+    });
+var Center_default = Center;
+;
+ //# sourceMappingURL=Center.mjs.map
+}),
+"[project]/twitter_client/node_modules/@lobehub/ui/es/Flex/Center.mjs [app-client] (ecmascript) <export default as Center>", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "Center",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$Center$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"]
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$Center$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/ui/es/Flex/Center.mjs [app-client] (ecmascript)");
+}),
+"[project]/twitter_client/node_modules/@lobehub/ui/es/Flex/FlexBasic.mjs [app-client] (ecmascript) <export default as Flexbox>", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "Flexbox",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$FlexBasic$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"]
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$FlexBasic$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/ui/es/Flex/FlexBasic.mjs [app-client] (ecmascript)");
+}),
+"[project]/twitter_client/node_modules/antd-style/es/utils/matchBrowserPrefers.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "matchBrowserPrefers",
+    ()=>matchBrowserPrefers
+]);
+var matchBrowserPrefers = function matchBrowserPrefers(mode) {
+    if (typeof window !== 'undefined') {
+        return matchMedia && matchMedia("(prefers-color-scheme: ".concat(mode, ")"));
+    }
+    // 针对 ssr 做特处
+    return {
+        matches: false
+    };
+};
+}),
+"[project]/twitter_client/node_modules/antd-style/es/context/ThemeModeContext.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "ThemeModeContext",
+    ()=>ThemeModeContext
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$antd$2d$style$2f$es$2f$utils$2f$matchBrowserPrefers$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/antd-style/es/utils/matchBrowserPrefers.js [app-client] (ecmascript)");
+var _matchBrowserPrefers;
+;
+;
+var ThemeModeContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createContext"])({
+    appearance: 'light',
+    setAppearance: function setAppearance() {},
+    isDarkMode: false,
+    themeMode: 'light',
+    setThemeMode: function setThemeMode() {},
+    browserPrefers: (_matchBrowserPrefers = (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$antd$2d$style$2f$es$2f$utils$2f$matchBrowserPrefers$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["matchBrowserPrefers"])('dark')) !== null && _matchBrowserPrefers !== void 0 && _matchBrowserPrefers.matches ? 'dark' : 'light'
+});
+}),
+"[project]/twitter_client/node_modules/antd-style/es/hooks/useThemeMode.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "useThemeMode",
+    ()=>useThemeMode
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$antd$2d$style$2f$es$2f$context$2f$ThemeModeContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/antd-style/es/context/ThemeModeContext.js [app-client] (ecmascript)");
+;
+;
+var useThemeMode = function useThemeMode() {
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useContext"])(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$antd$2d$style$2f$es$2f$context$2f$ThemeModeContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ThemeModeContext"]);
+};
+}),
+"[project]/twitter_client/node_modules/@lobehub/icons/es/features/IconAvatar/util.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "getAvatarShadow",
+    ()=>getAvatarShadow,
+    "roundToEven",
+    ()=>roundToEven
+]);
+var roundToEven = function roundToEven(number) {
+    return number % 2 === 0 ? number : number - 1;
+};
+var getAvatarShadow = function getAvatarShadow(isDarkMode, background) {
+    if (!background) return;
+    if (isDarkMode && background === '#000') {
+        return '0 0 0 1px rgba(255,255,255,0.1) inset';
+    } else if (!isDarkMode && background === '#fff') {
+        return '0 0 0 1px rgba(0,0,0,0.05) inset';
+    }
+    return;
+};
+}),
+"[project]/twitter_client/node_modules/@lobehub/icons/es/features/IconAvatar/index.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$Center$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Center$3e$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/ui/es/Flex/Center.mjs [app-client] (ecmascript) <export default as Center>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$antd$2d$style$2f$es$2f$hooks$2f$useThemeMode$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/antd-style/es/hooks/useThemeMode.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$features$2f$IconAvatar$2f$util$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/icons/es/features/IconAvatar/util.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/jsx-runtime.js [app-client] (ecmascript)");
+'use client';
+function _typeof(o) {
+    "@babel/helpers - typeof";
+    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o) {
+        return typeof o;
+    } : function(o) {
+        return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+    }, _typeof(o);
+}
+var _excluded = [
+    "shape",
+    "color",
+    "background",
+    "size",
+    "style",
+    "iconMultiple",
+    "Icon",
+    "iconStyle",
+    "iconClassName"
+];
+function ownKeys(e, r) {
+    var t = Object.keys(e);
+    if (Object.getOwnPropertySymbols) {
+        var o = Object.getOwnPropertySymbols(e);
+        r && (o = o.filter(function(r) {
+            return Object.getOwnPropertyDescriptor(e, r).enumerable;
+        })), t.push.apply(t, o);
+    }
+    return t;
+}
+function _objectSpread(e) {
+    for(var r = 1; r < arguments.length; r++){
+        var t = null != arguments[r] ? arguments[r] : {};
+        r % 2 ? ownKeys(Object(t), !0).forEach(function(r) {
+            _defineProperty(e, r, t[r]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r) {
+            Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r));
+        });
+    }
+    return e;
+}
+function _defineProperty(obj, key, value) {
+    key = _toPropertyKey(key);
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == _typeof(i) ? i : String(i);
+}
+function _toPrimitive(t, r) {
+    if ("object" != _typeof(t) || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+        var i = e.call(t, r || "default");
+        if ("object" != _typeof(i)) return i;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+}
+function _objectWithoutProperties(source, excluded) {
+    if (source == null) return {};
+    var target = _objectWithoutPropertiesLoose(source, excluded);
+    var key, i;
+    if (Object.getOwnPropertySymbols) {
+        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+        for(i = 0; i < sourceSymbolKeys.length; i++){
+            key = sourceSymbolKeys[i];
+            if (excluded.indexOf(key) >= 0) continue;
+            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+            target[key] = source[key];
+        }
+    }
+    return target;
+}
+function _objectWithoutPropertiesLoose(source, excluded) {
+    if (source == null) return {};
+    var target = {};
+    var sourceKeys = Object.keys(source);
+    var key, i;
+    for(i = 0; i < sourceKeys.length; i++){
+        key = sourceKeys[i];
+        if (excluded.indexOf(key) >= 0) continue;
+        target[key] = source[key];
+    }
+    return target;
+}
+;
+;
+;
+;
+;
+var IconAvatar = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(function(_ref) {
+    var _ref$shape = _ref.shape, shape = _ref$shape === void 0 ? 'circle' : _ref$shape, _ref$color = _ref.color, color = _ref$color === void 0 ? '#fff' : _ref$color, background = _ref.background, size = _ref.size, style = _ref.style, _ref$iconMultiple = _ref.iconMultiple, iconMultiple = _ref$iconMultiple === void 0 ? 0.75 : _ref$iconMultiple, Icon = _ref.Icon, iconStyle = _ref.iconStyle, iconClassName = _ref.iconClassName, rest = _objectWithoutProperties(_ref, _excluded);
+    var _useThemeMode = (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$antd$2d$style$2f$es$2f$hooks$2f$useThemeMode$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useThemeMode"])(), isDarkMode = _useThemeMode.isDarkMode;
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsx"])(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$Center$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Center$3e$__["Center"], _objectSpread(_objectSpread({
+        flex: 'none',
+        style: _objectSpread({
+            background: background,
+            borderRadius: shape === 'circle' ? '50%' : Math.floor(size * 0.1),
+            boxShadow: (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$features$2f$IconAvatar$2f$util$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getAvatarShadow"])(isDarkMode, background),
+            color: color,
+            height: size,
+            width: size
+        }, style)
+    }, rest), {}, {
+        children: Icon && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsx"])(Icon, {
+            className: iconClassName,
+            color: color,
+            size: size,
+            style: _objectSpread({
+                transform: "scale(".concat(iconMultiple, ")")
+            }, iconStyle)
+        })
+    }));
+});
+const __TURBOPACK__default__export__ = IconAvatar;
+}),
+"[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/style.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "AVATAR_BACKGROUND",
+    ()=>AVATAR_BACKGROUND,
+    "AVATAR_COLOR",
+    ()=>AVATAR_COLOR,
+    "AVATAR_ICON_MULTIPLE",
+    ()=>AVATAR_ICON_MULTIPLE,
+    "COLOR_PRIMARY",
+    ()=>COLOR_PRIMARY,
+    "COMBINE_SPACE_MULTIPLE",
+    ()=>COMBINE_SPACE_MULTIPLE,
+    "COMBINE_TEXT_MULTIPLE",
+    ()=>COMBINE_TEXT_MULTIPLE,
+    "TITLE",
+    ()=>TITLE
+]);
+var TITLE = 'Grok';
+var COMBINE_TEXT_MULTIPLE = 0.75;
+var COMBINE_SPACE_MULTIPLE = 0.2;
+var COLOR_PRIMARY = '#000';
+var AVATAR_BACKGROUND = COLOR_PRIMARY;
+var AVATAR_COLOR = '#fff';
+var AVATAR_ICON_MULTIPLE = 0.75;
+}),
+"[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/components/Mono.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/style.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/jsx-runtime.js [app-client] (ecmascript)");
+'use client';
+function _typeof(o) {
+    "@babel/helpers - typeof";
+    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o) {
+        return typeof o;
+    } : function(o) {
+        return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+    }, _typeof(o);
+}
+var _excluded = [
+    "size",
+    "style"
+];
+function ownKeys(e, r) {
+    var t = Object.keys(e);
+    if (Object.getOwnPropertySymbols) {
+        var o = Object.getOwnPropertySymbols(e);
+        r && (o = o.filter(function(r) {
+            return Object.getOwnPropertyDescriptor(e, r).enumerable;
+        })), t.push.apply(t, o);
+    }
+    return t;
+}
+function _objectSpread(e) {
+    for(var r = 1; r < arguments.length; r++){
+        var t = null != arguments[r] ? arguments[r] : {};
+        r % 2 ? ownKeys(Object(t), !0).forEach(function(r) {
+            _defineProperty(e, r, t[r]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r) {
+            Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r));
+        });
+    }
+    return e;
+}
+function _defineProperty(obj, key, value) {
+    key = _toPropertyKey(key);
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == _typeof(i) ? i : String(i);
+}
+function _toPrimitive(t, r) {
+    if ("object" != _typeof(t) || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+        var i = e.call(t, r || "default");
+        if ("object" != _typeof(i)) return i;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+}
+function _objectWithoutProperties(source, excluded) {
+    if (source == null) return {};
+    var target = _objectWithoutPropertiesLoose(source, excluded);
+    var key, i;
+    if (Object.getOwnPropertySymbols) {
+        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+        for(i = 0; i < sourceSymbolKeys.length; i++){
+            key = sourceSymbolKeys[i];
+            if (excluded.indexOf(key) >= 0) continue;
+            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+            target[key] = source[key];
+        }
+    }
+    return target;
+}
+function _objectWithoutPropertiesLoose(source, excluded) {
+    if (source == null) return {};
+    var target = {};
+    var sourceKeys = Object.keys(source);
+    var key, i;
+    for(i = 0; i < sourceKeys.length; i++){
+        key = sourceKeys[i];
+        if (excluded.indexOf(key) >= 0) continue;
+        target[key] = source[key];
+    }
+    return target;
+}
+;
+;
+;
+;
+var Icon = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(function(_ref) {
+    var _ref$size = _ref.size, size = _ref$size === void 0 ? '1em' : _ref$size, style = _ref.style, rest = _objectWithoutProperties(_ref, _excluded);
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxs"])("svg", _objectSpread(_objectSpread({
+        fill: "currentColor",
+        fillRule: "evenodd",
+        height: size,
+        style: _objectSpread({
+            flex: 'none',
+            lineHeight: 1
+        }, style),
+        viewBox: "0 0 24 24",
+        width: size,
+        xmlns: "http://www.w3.org/2000/svg"
+    }, rest), {}, {
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsx"])("title", {
+                children: __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TITLE"]
+            }),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsx"])("path", {
+                d: "M9.27 15.29l7.978-5.897c.391-.29.95-.177 1.137.272.98 2.369.542 5.215-1.41 7.169-1.951 1.954-4.667 2.382-7.149 1.406l-2.711 1.257c3.889 2.661 8.611 2.003 11.562-.953 2.341-2.344 3.066-5.539 2.388-8.42l.006.007c-.983-4.232.242-5.924 2.75-9.383.06-.082.12-.164.179-.248l-3.301 3.305v-.01L9.267 15.292M7.623 16.723c-2.792-2.67-2.31-6.801.071-9.184 1.761-1.763 4.647-2.483 7.166-1.425l2.705-1.25a7.808 7.808 0 00-1.829-1A8.975 8.975 0 005.984 5.83c-2.533 2.536-3.33 6.436-1.962 9.764 1.022 2.487-.653 4.246-2.34 6.022-.599.63-1.199 1.259-1.682 1.925l7.62-6.815"
+            })
+        ]
+    }));
+});
+const __TURBOPACK__default__export__ = Icon;
+}),
+"[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/components/Avatar.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$features$2f$IconAvatar$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/icons/es/features/IconAvatar/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/style.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$components$2f$Mono$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/components/Mono.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/jsx-runtime.js [app-client] (ecmascript)");
+'use client';
+function _typeof(o) {
+    "@babel/helpers - typeof";
+    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o) {
+        return typeof o;
+    } : function(o) {
+        return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+    }, _typeof(o);
+}
+function ownKeys(e, r) {
+    var t = Object.keys(e);
+    if (Object.getOwnPropertySymbols) {
+        var o = Object.getOwnPropertySymbols(e);
+        r && (o = o.filter(function(r) {
+            return Object.getOwnPropertyDescriptor(e, r).enumerable;
+        })), t.push.apply(t, o);
+    }
+    return t;
+}
+function _objectSpread(e) {
+    for(var r = 1; r < arguments.length; r++){
+        var t = null != arguments[r] ? arguments[r] : {};
+        r % 2 ? ownKeys(Object(t), !0).forEach(function(r) {
+            _defineProperty(e, r, t[r]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r) {
+            Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r));
+        });
+    }
+    return e;
+}
+function _defineProperty(obj, key, value) {
+    key = _toPropertyKey(key);
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == _typeof(i) ? i : String(i);
+}
+function _toPrimitive(t, r) {
+    if ("object" != _typeof(t) || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+        var i = e.call(t, r || "default");
+        if ("object" != _typeof(i)) return i;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+}
+function _objectDestructuringEmpty(obj) {
+    if (obj == null) throw new TypeError("Cannot destructure " + obj);
+}
+;
+;
+;
+;
+;
+var Avatar = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(function(_ref) {
+    var rest = Object.assign({}, (_objectDestructuringEmpty(_ref), _ref));
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsx"])(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$features$2f$IconAvatar$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], _objectSpread({
+        Icon: __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$components$2f$Mono$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"],
+        "aria-label": __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TITLE"],
+        background: __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AVATAR_BACKGROUND"],
+        color: __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AVATAR_COLOR"],
+        iconMultiple: __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AVATAR_ICON_MULTIPLE"]
+    }, rest));
+});
+const __TURBOPACK__default__export__ = Avatar;
+}),
+"[project]/twitter_client/node_modules/@lobehub/icons/es/features/IconCombine/index.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$FlexBasic$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Flexbox$3e$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/ui/es/Flex/FlexBasic.mjs [app-client] (ecmascript) <export default as Flexbox>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/jsx-runtime.js [app-client] (ecmascript)");
+'use client';
+function _typeof(o) {
+    "@babel/helpers - typeof";
+    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o) {
+        return typeof o;
+    } : function(o) {
+        return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+    }, _typeof(o);
+}
+var _excluded = [
+    "Icon",
+    "style",
+    "Text",
+    "color",
+    "size",
+    "spaceMultiple",
+    "textMultiple",
+    "extra",
+    "extraStyle",
+    "showText",
+    "showLogo",
+    "extraClassName",
+    "iconProps",
+    "inverse"
+];
+function ownKeys(e, r) {
+    var t = Object.keys(e);
+    if (Object.getOwnPropertySymbols) {
+        var o = Object.getOwnPropertySymbols(e);
+        r && (o = o.filter(function(r) {
+            return Object.getOwnPropertyDescriptor(e, r).enumerable;
+        })), t.push.apply(t, o);
+    }
+    return t;
+}
+function _objectSpread(e) {
+    for(var r = 1; r < arguments.length; r++){
+        var t = null != arguments[r] ? arguments[r] : {};
+        r % 2 ? ownKeys(Object(t), !0).forEach(function(r) {
+            _defineProperty(e, r, t[r]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r) {
+            Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r));
+        });
+    }
+    return e;
+}
+function _defineProperty(obj, key, value) {
+    key = _toPropertyKey(key);
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == _typeof(i) ? i : String(i);
+}
+function _toPrimitive(t, r) {
+    if ("object" != _typeof(t) || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+        var i = e.call(t, r || "default");
+        if ("object" != _typeof(i)) return i;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+}
+function _objectWithoutProperties(source, excluded) {
+    if (source == null) return {};
+    var target = _objectWithoutPropertiesLoose(source, excluded);
+    var key, i;
+    if (Object.getOwnPropertySymbols) {
+        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+        for(i = 0; i < sourceSymbolKeys.length; i++){
+            key = sourceSymbolKeys[i];
+            if (excluded.indexOf(key) >= 0) continue;
+            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+            target[key] = source[key];
+        }
+    }
+    return target;
+}
+function _objectWithoutPropertiesLoose(source, excluded) {
+    if (source == null) return {};
+    var target = {};
+    var sourceKeys = Object.keys(source);
+    var key, i;
+    for(i = 0; i < sourceKeys.length; i++){
+        key = sourceKeys[i];
+        if (excluded.indexOf(key) >= 0) continue;
+        target[key] = source[key];
+    }
+    return target;
+}
+;
+;
+;
+;
+;
+var IconCombine = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(function(_ref) {
+    var Icon = _ref.Icon, style = _ref.style, Text = _ref.Text, color = _ref.color, _ref$size = _ref.size, size = _ref$size === void 0 ? 24 : _ref$size, _ref$spaceMultiple = _ref.spaceMultiple, spaceMultiple = _ref$spaceMultiple === void 0 ? 1 : _ref$spaceMultiple, _ref$textMultiple = _ref.textMultiple, textMultiple = _ref$textMultiple === void 0 ? 1 : _ref$textMultiple, extra = _ref.extra, extraStyle = _ref.extraStyle, _ref$showText = _ref.showText, showText = _ref$showText === void 0 ? true : _ref$showText, _ref$showLogo = _ref.showLogo, showLogo = _ref$showLogo === void 0 ? true : _ref$showLogo, extraClassName = _ref.extraClassName, iconProps = _ref.iconProps, inverse = _ref.inverse, rest = _objectWithoutProperties(_ref, _excluded);
+    var logo = Icon && showLogo && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsx"])(Icon, _objectSpread(_objectSpread({
+        size: size
+    }, iconProps), {}, {
+        style: inverse ? _objectSpread({
+            marginLeft: size * spaceMultiple
+        }, iconProps === null || iconProps === void 0 ? void 0 : iconProps.style) : _objectSpread({
+            marginRight: size * spaceMultiple
+        }, iconProps === null || iconProps === void 0 ? void 0 : iconProps.style)
+    }));
+    var text = showText && Text && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsx"])(Text, {
+        size: size * textMultiple
+    });
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxs"])(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$ui$2f$es$2f$Flex$2f$FlexBasic$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Flexbox$3e$__["Flexbox"], _objectSpread(_objectSpread({
+        align: 'center',
+        flex: 'none',
+        horizontal: true,
+        justify: 'flex-start',
+        style: _objectSpread({
+            color: color
+        }, style)
+    }, rest), {}, {
+        children: [
+            inverse ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxs"])(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                children: [
+                    text,
+                    logo
+                ]
+            }) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxs"])(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                children: [
+                    logo,
+                    text
+                ]
+            }),
+            extra && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsx"])("span", {
+                className: extraClassName,
+                style: _objectSpread({
+                    fontSize: size * textMultiple * 0.95,
+                    lineHeight: 1
+                }, extraStyle),
+                children: extra
+            })
+        ]
+    }));
+});
+const __TURBOPACK__default__export__ = IconCombine;
+}),
+"[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/components/Text.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/style.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/jsx-runtime.js [app-client] (ecmascript)");
+'use client';
+function _typeof(o) {
+    "@babel/helpers - typeof";
+    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o) {
+        return typeof o;
+    } : function(o) {
+        return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+    }, _typeof(o);
+}
+var _excluded = [
+    "size",
+    "style"
+];
+function ownKeys(e, r) {
+    var t = Object.keys(e);
+    if (Object.getOwnPropertySymbols) {
+        var o = Object.getOwnPropertySymbols(e);
+        r && (o = o.filter(function(r) {
+            return Object.getOwnPropertyDescriptor(e, r).enumerable;
+        })), t.push.apply(t, o);
+    }
+    return t;
+}
+function _objectSpread(e) {
+    for(var r = 1; r < arguments.length; r++){
+        var t = null != arguments[r] ? arguments[r] : {};
+        r % 2 ? ownKeys(Object(t), !0).forEach(function(r) {
+            _defineProperty(e, r, t[r]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r) {
+            Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r));
+        });
+    }
+    return e;
+}
+function _defineProperty(obj, key, value) {
+    key = _toPropertyKey(key);
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == _typeof(i) ? i : String(i);
+}
+function _toPrimitive(t, r) {
+    if ("object" != _typeof(t) || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+        var i = e.call(t, r || "default");
+        if ("object" != _typeof(i)) return i;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+}
+function _objectWithoutProperties(source, excluded) {
+    if (source == null) return {};
+    var target = _objectWithoutPropertiesLoose(source, excluded);
+    var key, i;
+    if (Object.getOwnPropertySymbols) {
+        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+        for(i = 0; i < sourceSymbolKeys.length; i++){
+            key = sourceSymbolKeys[i];
+            if (excluded.indexOf(key) >= 0) continue;
+            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+            target[key] = source[key];
+        }
+    }
+    return target;
+}
+function _objectWithoutPropertiesLoose(source, excluded) {
+    if (source == null) return {};
+    var target = {};
+    var sourceKeys = Object.keys(source);
+    var key, i;
+    for(i = 0; i < sourceKeys.length; i++){
+        key = sourceKeys[i];
+        if (excluded.indexOf(key) >= 0) continue;
+        target[key] = source[key];
+    }
+    return target;
+}
+;
+;
+;
+;
+var Icon = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(function(_ref) {
+    var _ref$size = _ref.size, size = _ref$size === void 0 ? '1em' : _ref$size, style = _ref.style, rest = _objectWithoutProperties(_ref, _excluded);
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxs"])("svg", _objectSpread(_objectSpread({
+        fill: "currentColor",
+        fillRule: "evenodd",
+        height: size,
+        style: _objectSpread({
+            flex: 'none',
+            lineHeight: 1
+        }, style),
+        viewBox: "0 0 63 24",
+        xmlns: "http://www.w3.org/2000/svg"
+    }, rest), {}, {
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsx"])("title", {
+                children: __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TITLE"]
+            }),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsx"])("path", {
+                d: "M47.419 21.645V2.457h3.033V15.12l6.415-7.369h3.678l-5.772 6.316 5.825 7.578h-3.624l-4.717-6.512-1.805-.012v6.524h-3.033zM38.22 21.968c-4.51 0-6.952-3.198-6.952-7.283 0-4.112 2.443-7.283 6.952-7.283 4.537 0 6.952 3.17 6.952 7.283 0 4.085-2.415 7.283-6.952 7.283zm-3.785-7.283c0 3.17 1.718 4.756 3.785 4.756 2.094 0 3.785-1.585 3.785-4.756 0-3.172-1.691-4.784-3.785-4.784-2.067 0-3.785 1.612-3.785 4.784zM22.826 21.645V9.955l2.55-2.204h5.422v2.58H25.86v11.314h-3.033zM11.228 22C5.447 22 2 17.802 2 12.078 2 6.3 5.57 2 11.341 2c4.51 0 7.811 2.311 8.59 6.611h-3.463c-.51-2.445-2.55-3.816-5.127-3.816-4.16 0-5.986 3.601-5.986 7.283 0 3.682 1.826 7.256 5.986 7.256 3.973 0 5.717-2.876 5.852-5.267h-5.986v-2.783h9.046l-.015 1.455c0 5.406-2.203 9.261-9.01 9.261z"
+            })
+        ]
+    }));
+});
+const __TURBOPACK__default__export__ = Icon;
+}),
+"[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/components/Combine.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$features$2f$IconCombine$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/icons/es/features/IconCombine/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/style.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$components$2f$Mono$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/components/Mono.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$components$2f$Text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/components/Text.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/jsx-runtime.js [app-client] (ecmascript)");
+'use client';
+function _typeof(o) {
+    "@babel/helpers - typeof";
+    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o) {
+        return typeof o;
+    } : function(o) {
+        return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+    }, _typeof(o);
+}
+function ownKeys(e, r) {
+    var t = Object.keys(e);
+    if (Object.getOwnPropertySymbols) {
+        var o = Object.getOwnPropertySymbols(e);
+        r && (o = o.filter(function(r) {
+            return Object.getOwnPropertyDescriptor(e, r).enumerable;
+        })), t.push.apply(t, o);
+    }
+    return t;
+}
+function _objectSpread(e) {
+    for(var r = 1; r < arguments.length; r++){
+        var t = null != arguments[r] ? arguments[r] : {};
+        r % 2 ? ownKeys(Object(t), !0).forEach(function(r) {
+            _defineProperty(e, r, t[r]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r) {
+            Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r));
+        });
+    }
+    return e;
+}
+function _defineProperty(obj, key, value) {
+    key = _toPropertyKey(key);
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == _typeof(i) ? i : String(i);
+}
+function _toPrimitive(t, r) {
+    if ("object" != _typeof(t) || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+        var i = e.call(t, r || "default");
+        if ("object" != _typeof(i)) return i;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+}
+function _objectDestructuringEmpty(obj) {
+    if (obj == null) throw new TypeError("Cannot destructure " + obj);
+}
+;
+;
+;
+;
+;
+;
+var Combine = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(function(_ref) {
+    var rest = Object.assign({}, (_objectDestructuringEmpty(_ref), _ref));
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsx"])(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$features$2f$IconCombine$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], _objectSpread({
+        Icon: __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$components$2f$Mono$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"],
+        Text: __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$components$2f$Text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"],
+        "aria-label": __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TITLE"],
+        spaceMultiple: __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["COMBINE_SPACE_MULTIPLE"],
+        textMultiple: __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["COMBINE_TEXT_MULTIPLE"]
+    }, rest));
+});
+const __TURBOPACK__default__export__ = Combine;
+}),
+"[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/index.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$components$2f$Avatar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/components/Avatar.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$components$2f$Combine$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/components/Combine.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$components$2f$Mono$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/components/Mono.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$components$2f$Text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/components/Text.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/style.js [app-client] (ecmascript)");
+;
+;
+;
+;
+;
+var Icons = __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$components$2f$Mono$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"];
+Icons.Text = __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$components$2f$Text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"];
+Icons.Combine = __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$components$2f$Combine$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"];
+Icons.Avatar = __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$components$2f$Avatar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"];
+Icons.colorPrimary = __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["COLOR_PRIMARY"];
+Icons.title = __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TITLE"];
+const __TURBOPACK__default__export__ = Icons;
+}),
+"[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/index.js [app-client] (ecmascript) <export default as Grok>", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "Grok",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"]
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@lobehub/icons/es/Grok/index.js [app-client] (ecmascript)");
+}),
+"[project]/twitter_client/node_modules/graphql-request/build/legacy/classes/ClientError.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "ClientError",
+    ()=>ClientError
+]);
+class ClientError extends Error {
+    response;
+    request;
+    constructor(response, request){
+        const message = `${ClientError.extractMessage(response)}: ${JSON.stringify({
+            response,
+            request
+        })}`;
+        super(message);
+        Object.setPrototypeOf(this, ClientError.prototype);
+        this.response = response;
+        this.request = request;
+        // this is needed as Safari doesn't support .captureStackTrace
+        if (typeof Error.captureStackTrace === `function`) {
+            Error.captureStackTrace(this, ClientError);
+        }
+    }
+    static extractMessage(response) {
+        return response.errors?.[0]?.message ?? `GraphQL Error (Code: ${String(response.status)})`;
+    }
+} //# sourceMappingURL=ClientError.js.map
+}),
+"[project]/twitter_client/node_modules/graphql-request/build/lib/prelude.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "HeadersInitToPlainObject",
+    ()=>HeadersInitToPlainObject,
+    "HeadersInstanceToPlainObject",
+    ()=>HeadersInstanceToPlainObject,
+    "assertArray",
+    ()=>assertArray,
+    "assertObject",
+    ()=>assertObject,
+    "callOrIdentity",
+    ()=>callOrIdentity,
+    "capitalizeFirstLetter",
+    ()=>capitalizeFirstLetter,
+    "casesExhausted",
+    ()=>casesExhausted,
+    "createDeferred",
+    ()=>createDeferred,
+    "debug",
+    ()=>debug,
+    "debugSub",
+    ()=>debugSub,
+    "entries",
+    ()=>entries,
+    "errorFromMaybeError",
+    ()=>errorFromMaybeError,
+    "isPlainObject",
+    ()=>isPlainObject,
+    "isPromiseLikeValue",
+    ()=>isPromiseLikeValue,
+    "lowerCaseFirstLetter",
+    ()=>lowerCaseFirstLetter,
+    "mapValues",
+    ()=>mapValues,
+    "partitionErrors",
+    ()=>partitionErrors,
+    "tryCatch",
+    ()=>tryCatch,
+    "uppercase",
+    ()=>uppercase,
+    "values",
+    ()=>values,
+    "zip",
+    ()=>zip
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
+const uppercase = (str)=>str.toUpperCase();
+const callOrIdentity = (value)=>{
+    return typeof value === `function` ? value() : value;
+};
+const zip = (a, b)=>a.map((k, i)=>[
+            k,
+            b[i]
+        ]);
+const HeadersInitToPlainObject = (headers)=>{
+    let oHeaders = {};
+    if (headers instanceof Headers) {
+        oHeaders = HeadersInstanceToPlainObject(headers);
+    } else if (Array.isArray(headers)) {
+        headers.forEach(([name, value])=>{
+            if (name && value !== undefined) {
+                oHeaders[name] = value;
+            }
+        });
+    } else if (headers) {
+        oHeaders = headers;
+    }
+    return oHeaders;
+};
+const HeadersInstanceToPlainObject = (headers)=>{
+    const o = {};
+    headers.forEach((v, k)=>{
+        o[k] = v;
+    });
+    return o;
+};
+const tryCatch = (fn)=>{
+    try {
+        const result = fn();
+        if (isPromiseLikeValue(result)) {
+            return result.catch((error)=>{
+                return errorFromMaybeError(error);
+            });
+        }
+        return result;
+    } catch (error) {
+        return errorFromMaybeError(error);
+    }
+};
+const errorFromMaybeError = (maybeError)=>{
+    if (maybeError instanceof Error) return maybeError;
+    return new Error(String(maybeError));
+};
+const isPromiseLikeValue = (value)=>{
+    return typeof value === `object` && value !== null && `then` in value && typeof value.then === `function` && `catch` in value && typeof value.catch === `function` && `finally` in value && typeof value.finally === `function`;
+};
+const casesExhausted = (value)=>{
+    throw new Error(`Unhandled case: ${String(value)}`);
+};
+const isPlainObject = (value)=>{
+    return typeof value === `object` && value !== null && !Array.isArray(value);
+};
+const entries = (obj)=>Object.entries(obj);
+const values = (obj)=>Object.values(obj);
+const mapValues = (object, fn)=>{
+    return Object.fromEntries(Object.entries(object).map(([key, value])=>{
+        return [
+            key,
+            fn(value, key)
+        ];
+    }));
+};
+const lowerCaseFirstLetter = (s)=>{
+    return s.charAt(0).toLowerCase() + s.slice(1);
+};
+function assertArray(v) {
+    if (!Array.isArray(v)) throw new Error(`Expected array. Got: ${String(v)}`);
+}
+function assertObject(v) {
+    if (v === null || typeof v !== `object`) throw new Error(`Expected object. Got: ${String(v)}`);
+}
+const capitalizeFirstLetter = (string)=>string.charAt(0).toUpperCase() + string.slice(1);
+const createDeferred = (options)=>{
+    let isResolved = false;
+    let resolve;
+    let reject;
+    const promise = new Promise(($resolve, $reject)=>{
+        resolve = $resolve;
+        reject = $reject;
+    });
+    return {
+        promise,
+        isResolved: ()=>isResolved,
+        resolve: (value)=>{
+            isResolved = true;
+            if (options?.strict && isResolved) {
+                throw new Error(`Deferred is already resolved. Attempted to resolve with: ${JSON.stringify(value)}`);
+            }
+            resolve(value);
+        },
+        reject: (error)=>reject(error)
+    };
+};
+const debug = (...args)=>{
+    if (__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env[`DEBUG`]) {
+        console.log(...args);
+    }
+};
+const debugSub = (...args)=>(...subArgs)=>{
+        debug(...args, ...subArgs);
+    };
+const partitionErrors = (array)=>{
+    const errors = [];
+    const values = [];
+    for (const item of array){
+        if (item instanceof Error) {
+            errors.push(item);
+        } else {
+            values.push(item);
+        }
+    }
+    return [
+        values,
+        errors
+    ];
+}; //# sourceMappingURL=prelude.js.map
+}),
+"[project]/twitter_client/node_modules/graphql-request/build/legacy/functions/batchRequests.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "batchRequests",
+    ()=>batchRequests,
+    "parseBatchRequestArgs",
+    ()=>parseBatchRequestArgs,
+    "parseBatchRequestsArgsExtended",
+    ()=>parseBatchRequestsArgsExtended
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$classes$2f$GraphQLClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/legacy/classes/GraphQLClient.js [app-client] (ecmascript)");
+;
+const batchRequests = async (...args)=>{
+    const params = parseBatchRequestsArgsExtended(args);
+    const client = new __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$classes$2f$GraphQLClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GraphQLClient"](params.url);
+    return client.batchRequests(params);
+};
+const parseBatchRequestsArgsExtended = (args)=>{
+    if (args.length === 1) {
+        return args[0];
+    } else {
+        return {
+            url: args[0],
+            documents: args[1],
+            requestHeaders: args[2],
+            signal: undefined
+        };
+    }
+};
+const parseBatchRequestArgs = (documentsOrOptions, requestHeaders)=>{
+    // eslint-disable-next-line
+    return documentsOrOptions.documents ? documentsOrOptions : {
+        documents: documentsOrOptions,
+        requestHeaders: requestHeaders,
+        signal: undefined
+    };
+}; //# sourceMappingURL=batchRequests.js.map
+}),
+"[project]/twitter_client/node_modules/graphql-request/build/legacy/functions/rawRequest.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "parseRawRequestArgs",
+    ()=>parseRawRequestArgs,
+    "parseRawRequestExtendedArgs",
+    ()=>parseRawRequestExtendedArgs,
+    "rawRequest",
+    ()=>rawRequest
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$classes$2f$GraphQLClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/legacy/classes/GraphQLClient.js [app-client] (ecmascript)");
+;
+const rawRequest = async (...args)=>{
+    const [urlOrOptions, query, ...variablesAndRequestHeaders] = args;
+    const requestOptions = parseRawRequestExtendedArgs(urlOrOptions, query, ...variablesAndRequestHeaders);
+    const client = new __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$classes$2f$GraphQLClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GraphQLClient"](requestOptions.url);
+    return client.rawRequest({
+        ...requestOptions
+    });
+};
+const parseRawRequestExtendedArgs = (urlOrOptions, query, ...variablesAndRequestHeaders)=>{
+    const [variables, requestHeaders] = variablesAndRequestHeaders;
+    return typeof urlOrOptions === `string` ? {
+        url: urlOrOptions,
+        query: query,
+        variables,
+        requestHeaders,
+        signal: undefined
+    } : urlOrOptions;
+};
+const parseRawRequestArgs = (queryOrOptions, variables, requestHeaders)=>{
+    return queryOrOptions.query ? queryOrOptions : {
+        query: queryOrOptions,
+        variables: variables,
+        requestHeaders: requestHeaders,
+        signal: undefined
+    };
+}; //# sourceMappingURL=rawRequest.js.map
+}),
+"[project]/twitter_client/node_modules/graphql-request/build/lib/http.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "ACCEPT_HEADER",
+    ()=>ACCEPT_HEADER,
+    "CONTENT_TYPE_GQL",
+    ()=>CONTENT_TYPE_GQL,
+    "CONTENT_TYPE_HEADER",
+    ()=>CONTENT_TYPE_HEADER,
+    "CONTENT_TYPE_JSON",
+    ()=>CONTENT_TYPE_JSON,
+    "statusCodes",
+    ()=>statusCodes
+]);
+const ACCEPT_HEADER = `Accept`;
+const CONTENT_TYPE_HEADER = `Content-Type`;
+const CONTENT_TYPE_JSON = `application/json`;
+const CONTENT_TYPE_GQL = `application/graphql-response+json`;
+const statusCodes = {
+    success: 200
+}; //# sourceMappingURL=http.js.map
+}),
+"[project]/twitter_client/node_modules/graphql-request/build/legacy/lib/graphql.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "cleanQuery",
+    ()=>cleanQuery,
+    "isExecutionResultHaveErrors",
+    ()=>isExecutionResultHaveErrors,
+    "isGraphQLContentType",
+    ()=>isGraphQLContentType,
+    "isOperationDefinitionNode",
+    ()=>isOperationDefinitionNode,
+    "isRequestResultHaveErrors",
+    ()=>isRequestResultHaveErrors,
+    "parseExecutionResult",
+    ()=>parseExecutionResult,
+    "parseGraphQLExecutionResult",
+    ()=>parseGraphQLExecutionResult
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2f$language$2f$kinds$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql/language/kinds.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$http$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/lib/http.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/lib/prelude.js [app-client] (ecmascript)");
+;
+;
+;
+const cleanQuery = (str)=>str.replace(/([\s,]|#[^\n\r]+)+/g, ` `).trim();
+const isGraphQLContentType = (contentType)=>{
+    const contentTypeLower = contentType.toLowerCase();
+    return contentTypeLower.includes(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$http$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CONTENT_TYPE_GQL"]) || contentTypeLower.includes(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$http$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CONTENT_TYPE_JSON"]);
+};
+const parseGraphQLExecutionResult = (result)=>{
+    try {
+        if (Array.isArray(result)) {
+            return {
+                _tag: `Batch`,
+                executionResults: result.map(parseExecutionResult)
+            };
+        } else if ((0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isPlainObject"])(result)) {
+            return {
+                _tag: `Single`,
+                executionResult: parseExecutionResult(result)
+            };
+        } else {
+            throw new Error(`Invalid execution result: result is not object or array. \nGot:\n${String(result)}`);
+        }
+    } catch (e) {
+        return e;
+    }
+};
+const parseExecutionResult = (result)=>{
+    if (typeof result !== `object` || result === null) {
+        throw new Error(`Invalid execution result: result is not object`);
+    }
+    let errors = undefined;
+    let data = undefined;
+    let extensions = undefined;
+    if (`errors` in result) {
+        if (!(0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isPlainObject"])(result.errors) && !Array.isArray(result.errors)) {
+            throw new Error(`Invalid execution result: errors is not plain object OR array`); // prettier-ignore
+        }
+        errors = result.errors;
+    }
+    // todo add test coverage for case of null. @see https://github.com/jasonkuhrt/graphql-request/issues/739
+    if (`data` in result) {
+        if (!(0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isPlainObject"])(result.data) && result.data !== null) {
+            throw new Error(`Invalid execution result: data is not plain object`); // prettier-ignore
+        }
+        data = result.data;
+    }
+    if (`extensions` in result) {
+        if (!(0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isPlainObject"])(result.extensions)) throw new Error(`Invalid execution result: extensions is not plain object`); // prettier-ignore
+        extensions = result.extensions;
+    }
+    return {
+        data,
+        errors,
+        extensions
+    };
+};
+const isRequestResultHaveErrors = (result)=>result._tag === `Batch` ? result.executionResults.some(isExecutionResultHaveErrors) : isExecutionResultHaveErrors(result.executionResult);
+const isExecutionResultHaveErrors = (result)=>Array.isArray(result.errors) ? result.errors.length > 0 : Boolean(result.errors);
+const isOperationDefinitionNode = (definition)=>{
+    return typeof definition === `object` && definition !== null && `kind` in definition && definition.kind === __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2f$language$2f$kinds$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Kind"].OPERATION_DEFINITION;
+}; //# sourceMappingURL=graphql.js.map
+}),
+"[project]/twitter_client/node_modules/graphql-request/build/legacy/helpers/analyzeDocument.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "analyzeDocument",
+    ()=>analyzeDocument
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/lib/prelude.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$lib$2f$graphql$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/legacy/lib/graphql.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2f$language$2f$parser$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql/language/parser.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2f$language$2f$printer$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql/language/printer.mjs [app-client] (ecmascript)");
+;
+;
+;
+;
+/**
+ * helpers
+ */ const extractOperationName = (document)=>{
+    let operationName = undefined;
+    const defs = document.definitions.filter(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$lib$2f$graphql$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isOperationDefinitionNode"]);
+    if (defs.length === 1) {
+        operationName = defs[0].name?.value;
+    }
+    return operationName;
+};
+const extractIsMutation = (document)=>{
+    let isMutation = false;
+    const defs = document.definitions.filter(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$lib$2f$graphql$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isOperationDefinitionNode"]);
+    if (defs.length === 1) {
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison --
+         * graphql@15's `OperationTypeNode` is a type, but graphql@16's `OperationTypeNode` is a native TypeScript enum
+         * Therefore, we cannot use `OperationTypeNode.MUTATION` here because it wouldn't work with graphql@15
+         **/ isMutation = defs[0].operation === `mutation`;
+    }
+    return isMutation;
+};
+const analyzeDocument = (document, excludeOperationName)=>{
+    /**
+     * Normalize boxed String objects to primitive strings for compatibility with TypedDocumentString.
+     *
+     * Problem: \@graphql-codegen with `documentMode: 'string'` generates a TypedDocumentString class that
+     * extends the built-in String class, creating "boxed String" instances:
+     *
+     * @see https://github.com/dotansimha/graphql-code-generator/blob/c87b779b9b400813d733fa89dcb16724b30c6d16/packages/plugins/typescript/typed-document-node/src/index.ts#L40-L57
+     *
+     * ```
+     * class TypedDocumentString<TResult, TVariables> extends String
+     *   constructor(value: string)
+     *     super(value)  // Creates a boxed String object, not a primitive string
+     * ```
+     *
+     * Boxed Strings are objects, not primitives:
+     * - `typeof "hello" === "string"` returns true
+     * - `typeof new String("hello") === "string"` returns false (returns "object")
+     *
+     * Without normalization, TypedDocumentString instances would fail the `typeof === 'string'` check
+     * and incorrectly be passed to `print()`, which expects a DocumentNode AST, causing a crash.
+     *
+     * Solution: Detect and convert boxed Strings to primitives using template literal coercion.
+     * - Primitive strings pass through (typeof === "string")
+     * - DocumentNode objects pass through (have .kind property)
+     * - Boxed Strings get converted to primitives (template literal to primitive string)
+     *
+     * @see https://github.com/graffle-js/graffle/issues/1453
+     */ const normalizedDocument = typeof document === `string` || `kind` in document ? document : String(document);
+    const expression = typeof normalizedDocument === `string` ? normalizedDocument : (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2f$language$2f$printer$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["print"])(normalizedDocument);
+    let isMutation = false;
+    let operationName = undefined;
+    if (excludeOperationName) {
+        return {
+            expression,
+            isMutation,
+            operationName
+        };
+    }
+    const docNode = (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["tryCatch"])(()=>typeof normalizedDocument === `string` ? (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2f$language$2f$parser$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["parse"])(normalizedDocument) : normalizedDocument);
+    if (docNode instanceof Error) {
+        return {
+            expression,
+            isMutation,
+            operationName
+        };
+    }
+    operationName = extractOperationName(docNode);
+    isMutation = extractIsMutation(docNode);
+    return {
+        expression,
+        operationName,
+        isMutation
+    };
+}; //# sourceMappingURL=analyzeDocument.js.map
+}),
+"[project]/twitter_client/node_modules/graphql-request/build/legacy/helpers/defaultJsonSerializer.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "defaultJsonSerializer",
+    ()=>defaultJsonSerializer
+]);
+const defaultJsonSerializer = JSON; //# sourceMappingURL=defaultJsonSerializer.js.map
+}),
+"[project]/twitter_client/node_modules/graphql-request/build/legacy/helpers/runRequest.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "runRequest",
+    ()=>runRequest
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$http$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/lib/http.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/lib/prelude.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$classes$2f$ClientError$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/legacy/classes/ClientError.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$lib$2f$graphql$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/legacy/lib/graphql.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$helpers$2f$defaultJsonSerializer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/legacy/helpers/defaultJsonSerializer.js [app-client] (ecmascript)");
+;
+;
+;
+;
+;
+const runRequest = async (input)=>{
+    // todo make a Config type
+    const config = {
+        ...input,
+        method: input.request._tag === `Single` ? input.request.document.isMutation ? `POST` : (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["uppercase"])(input.method ?? `post`) : input.request.hasMutations ? `POST` : (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["uppercase"])(input.method ?? `post`),
+        fetchOptions: {
+            ...input.fetchOptions,
+            errorPolicy: input.fetchOptions.errorPolicy ?? `none`
+        }
+    };
+    const fetcher = createFetcher(config.method);
+    const fetchResponse = await fetcher(config);
+    // Read response body text first (can only be read once)
+    const body = await fetchResponse.text();
+    // Parse response body FIRST, regardless of HTTP status
+    // This allows GraphQL errors to be extracted even when HTTP status is 4xx/5xx (fixes #1281)
+    let result;
+    try {
+        result = parseResultFromText(body, fetchResponse.headers.get(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$http$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CONTENT_TYPE_HEADER"]), input.fetchOptions.jsonSerializer ?? __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$helpers$2f$defaultJsonSerializer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["defaultJsonSerializer"]);
+    } catch (error) {
+        // If parsing fails, we'll handle it below based on HTTP status
+        result = error;
+    }
+    const clientResponseBase = {
+        status: fetchResponse.status,
+        headers: fetchResponse.headers,
+        body
+    };
+    // Handle non-2xx HTTP status codes
+    if (!fetchResponse.ok) {
+        if (result instanceof Error) {
+            // Parse failed - return ClientError without GraphQL data
+            // Still returns ClientError (not generic Error) to allow status code access
+            return new __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$classes$2f$ClientError$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ClientError"]({
+                ...clientResponseBase
+            }, {
+                query: input.request._tag === `Single` ? input.request.document.expression : input.request.query,
+                variables: input.request.variables
+            });
+        }
+        // Parse succeeded - return ClientError WITH GraphQL errors/data (fixes #1281)
+        const clientResponse = result._tag === `Batch` ? {
+            ...result.executionResults,
+            ...clientResponseBase
+        } : {
+            ...result.executionResult,
+            ...clientResponseBase
+        };
+        // @ts-expect-error todo
+        return new __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$classes$2f$ClientError$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ClientError"](clientResponse, {
+            query: input.request._tag === `Single` ? input.request.document.expression : input.request.query,
+            variables: input.request.variables
+        });
+    }
+    // For 2xx responses, parse errors should throw
+    if (result instanceof Error) throw result;
+    if ((0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$lib$2f$graphql$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isRequestResultHaveErrors"])(result) && config.fetchOptions.errorPolicy === `none`) {
+        // todo this client response on error is not consistent with the data type for success
+        const clientResponse = result._tag === `Batch` ? {
+            ...result.executionResults,
+            ...clientResponseBase
+        } : {
+            ...result.executionResult,
+            ...clientResponseBase
+        };
+        // @ts-expect-error todo
+        return new __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$classes$2f$ClientError$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ClientError"](clientResponse, {
+            query: input.request._tag === `Single` ? input.request.document.expression : input.request.query,
+            variables: input.request.variables
+        });
+    }
+    switch(result._tag){
+        case `Single`:
+            // @ts-expect-error todo
+            return {
+                ...clientResponseBase,
+                ...executionResultClientResponseFields(config)(result.executionResult)
+            };
+        case `Batch`:
+            return {
+                ...clientResponseBase,
+                data: result.executionResults.map(executionResultClientResponseFields(config))
+            };
+        default:
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["casesExhausted"])(result);
+    }
+};
+const executionResultClientResponseFields = ($params)=>(executionResult)=>{
+        return {
+            extensions: executionResult.extensions,
+            data: executionResult.data,
+            errors: $params.fetchOptions.errorPolicy === `all` ? executionResult.errors : undefined
+        };
+    };
+const parseResultFromText = (text, contentType, jsonSerializer)=>{
+    if (contentType && (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$lib$2f$graphql$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isGraphQLContentType"])(contentType)) {
+        return (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$lib$2f$graphql$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["parseGraphQLExecutionResult"])(jsonSerializer.parse(text));
+    } else {
+        // todo what is this good for...? Seems very random/undefined
+        return (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$lib$2f$graphql$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["parseGraphQLExecutionResult"])(text);
+    }
+};
+const createFetcher = (method)=>async (params)=>{
+        const headers = new Headers(params.headers);
+        let searchParams = null;
+        let body = undefined;
+        if (!headers.has(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$http$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ACCEPT_HEADER"])) {
+            headers.set(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$http$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ACCEPT_HEADER"], [
+                __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$http$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CONTENT_TYPE_GQL"],
+                __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$http$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CONTENT_TYPE_JSON"]
+            ].join(`, `));
+        }
+        if (method === `POST`) {
+            const $jsonSerializer = params.fetchOptions.jsonSerializer ?? __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$helpers$2f$defaultJsonSerializer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["defaultJsonSerializer"];
+            body = $jsonSerializer.stringify(buildBody(params));
+            if (typeof body === `string` && !headers.has(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$http$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CONTENT_TYPE_HEADER"])) {
+                headers.set(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$http$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CONTENT_TYPE_HEADER"], __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$http$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CONTENT_TYPE_JSON"]);
+            }
+        } else {
+            searchParams = buildQueryParams(params);
+        }
+        const init = {
+            method,
+            headers,
+            body,
+            ...params.fetchOptions
+        };
+        let url = new URL(params.url);
+        let initResolved = init;
+        if (params.middleware) {
+            const result = await Promise.resolve(params.middleware({
+                ...init,
+                url: params.url,
+                operationName: params.request._tag === `Single` ? params.request.document.operationName : undefined,
+                variables: params.request.variables
+            }));
+            const { url: urlNew, ...initNew } = result;
+            url = new URL(urlNew);
+            initResolved = initNew;
+        }
+        if (searchParams) {
+            searchParams.forEach((value, name)=>{
+                url.searchParams.append(name, value);
+            });
+        }
+        const $fetch = params.fetch ?? fetch;
+        return await $fetch(url, initResolved);
+    };
+const buildBody = (params)=>{
+    switch(params.request._tag){
+        case `Single`:
+            return {
+                query: params.request.document.expression,
+                variables: params.request.variables,
+                operationName: params.request.document.operationName
+            };
+        case `Batch`:
+            return (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["zip"])(params.request.query, params.request.variables ?? []).map(([query, variables])=>({
+                    query,
+                    variables
+                }));
+        default:
+            throw (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["casesExhausted"])(params.request);
+    }
+};
+const buildQueryParams = (params)=>{
+    const $jsonSerializer = params.fetchOptions.jsonSerializer ?? __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$helpers$2f$defaultJsonSerializer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["defaultJsonSerializer"];
+    const searchParams = new URLSearchParams();
+    switch(params.request._tag){
+        case `Single`:
+            {
+                searchParams.append(`query`, (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$lib$2f$graphql$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["cleanQuery"])(params.request.document.expression));
+                if (params.request.variables) {
+                    searchParams.append(`variables`, $jsonSerializer.stringify(params.request.variables));
+                }
+                if (params.request.document.operationName) {
+                    searchParams.append(`operationName`, params.request.document.operationName);
+                }
+                return searchParams;
+            }
+        case `Batch`:
+            {
+                const variablesSerialized = params.request.variables?.map((v)=>$jsonSerializer.stringify(v)) ?? [];
+                const queriesCleaned = params.request.query.map(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$lib$2f$graphql$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["cleanQuery"]);
+                const payload = (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["zip"])(queriesCleaned, variablesSerialized).map(([query, variables])=>({
+                        query,
+                        variables
+                    }));
+                searchParams.append(`query`, $jsonSerializer.stringify(payload));
+                return searchParams;
+            }
+        default:
+            throw (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["casesExhausted"])(params.request);
+    }
+}; //# sourceMappingURL=runRequest.js.map
+}),
+"[project]/twitter_client/node_modules/graphql-request/build/legacy/classes/GraphQLClient.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "GraphQLClient",
+    ()=>GraphQLClient
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/lib/prelude.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$functions$2f$batchRequests$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/legacy/functions/batchRequests.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$functions$2f$rawRequest$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/legacy/functions/rawRequest.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$functions$2f$request$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/legacy/functions/request.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$helpers$2f$analyzeDocument$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/legacy/helpers/analyzeDocument.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$helpers$2f$runRequest$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/legacy/helpers/runRequest.js [app-client] (ecmascript)");
+;
+;
+;
+;
+;
+;
+class GraphQLClient {
+    url;
+    requestConfig;
+    constructor(url, requestConfig = {}){
+        this.url = url;
+        this.requestConfig = requestConfig;
+    }
+    /**
+     * Send a GraphQL query to the server.
+     */ rawRequest = async (...args)=>{
+        const [queryOrOptions, variables, requestHeaders] = args;
+        const rawRequestOptions = (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$functions$2f$rawRequest$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["parseRawRequestArgs"])(queryOrOptions, variables, requestHeaders);
+        const { headers, fetch = globalThis.fetch, method = `POST`, requestMiddleware, responseMiddleware, excludeOperationName, ...fetchOptions } = this.requestConfig;
+        const { url } = this;
+        if (rawRequestOptions.signal !== undefined) {
+            fetchOptions.signal = rawRequestOptions.signal;
+        }
+        const document = (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$helpers$2f$analyzeDocument$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["analyzeDocument"])(rawRequestOptions.query, excludeOperationName);
+        const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$helpers$2f$runRequest$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["runRequest"])({
+            url,
+            request: {
+                _tag: `Single`,
+                document,
+                variables: rawRequestOptions.variables
+            },
+            headers: {
+                ...(0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadersInitToPlainObject"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["callOrIdentity"])(headers)),
+                ...(0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadersInitToPlainObject"])(rawRequestOptions.requestHeaders)
+            },
+            fetch,
+            method,
+            fetchOptions,
+            middleware: requestMiddleware
+        });
+        if (responseMiddleware) {
+            await responseMiddleware(response, {
+                operationName: document.operationName,
+                variables,
+                url: this.url
+            });
+        }
+        if (response instanceof Error) {
+            throw response;
+        }
+        return response;
+    };
+    async request(documentOrOptions, ...variablesAndRequestHeaders) {
+        const [variables, requestHeaders] = variablesAndRequestHeaders;
+        const requestOptions = (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$functions$2f$request$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["parseRequestArgs"])(documentOrOptions, variables, requestHeaders);
+        const { headers, fetch = globalThis.fetch, method = `POST`, requestMiddleware, responseMiddleware, excludeOperationName, ...fetchOptions } = this.requestConfig;
+        const { url } = this;
+        if (requestOptions.signal !== undefined) {
+            fetchOptions.signal = requestOptions.signal;
+        }
+        const analyzedDocument = (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$helpers$2f$analyzeDocument$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["analyzeDocument"])(requestOptions.document, excludeOperationName);
+        const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$helpers$2f$runRequest$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["runRequest"])({
+            url,
+            request: {
+                _tag: `Single`,
+                document: analyzedDocument,
+                variables: requestOptions.variables
+            },
+            headers: {
+                ...(0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadersInitToPlainObject"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["callOrIdentity"])(headers)),
+                ...(0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadersInitToPlainObject"])(requestOptions.requestHeaders)
+            },
+            fetch,
+            method,
+            fetchOptions,
+            middleware: requestMiddleware
+        });
+        if (responseMiddleware) {
+            await responseMiddleware(response, {
+                operationName: analyzedDocument.operationName,
+                variables: requestOptions.variables,
+                url: this.url
+            });
+        }
+        if (response instanceof Error) {
+            throw response;
+        }
+        return response.data;
+    }
+    async batchRequests(documentsOrOptions, requestHeaders) {
+        const batchRequestOptions = (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$functions$2f$batchRequests$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["parseBatchRequestArgs"])(documentsOrOptions, requestHeaders);
+        const { headers, excludeOperationName, ...fetchOptions } = this.requestConfig;
+        if (batchRequestOptions.signal !== undefined) {
+            fetchOptions.signal = batchRequestOptions.signal;
+        }
+        const analyzedDocuments = batchRequestOptions.documents.map(({ document })=>(0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$helpers$2f$analyzeDocument$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["analyzeDocument"])(document, excludeOperationName));
+        const expressions = analyzedDocuments.map(({ expression })=>expression);
+        const hasMutations = analyzedDocuments.some(({ isMutation })=>isMutation);
+        const variables = batchRequestOptions.documents.map(({ variables })=>variables);
+        const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$helpers$2f$runRequest$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["runRequest"])({
+            url: this.url,
+            request: {
+                _tag: `Batch`,
+                operationName: undefined,
+                query: expressions,
+                hasMutations,
+                variables
+            },
+            headers: {
+                ...(0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadersInitToPlainObject"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["callOrIdentity"])(headers)),
+                ...(0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$lib$2f$prelude$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["HeadersInitToPlainObject"])(batchRequestOptions.requestHeaders)
+            },
+            fetch: this.requestConfig.fetch ?? globalThis.fetch,
+            method: this.requestConfig.method || `POST`,
+            fetchOptions,
+            middleware: this.requestConfig.requestMiddleware
+        });
+        if (this.requestConfig.responseMiddleware) {
+            await this.requestConfig.responseMiddleware(response, {
+                operationName: undefined,
+                variables,
+                url: this.url
+            });
+        }
+        if (response instanceof Error) {
+            throw response;
+        }
+        return response.data;
+    }
+    setHeaders(headers) {
+        this.requestConfig.headers = headers;
+        return this;
+    }
+    /**
+     * Attach a header to the client. All subsequent requests will have this header.
+     */ setHeader(key, value) {
+        const { headers } = this.requestConfig;
+        if (headers) {
+            // todo what if headers is in nested array form... ?
+            // @ts-expect-error todo
+            headers[key] = value;
+        } else {
+            this.requestConfig.headers = {
+                [key]: value
+            };
+        }
+        return this;
+    }
+    /**
+     * Change the client endpoint. All subsequent requests will send to this endpoint.
+     */ setEndpoint(value) {
+        this.url = value;
+        return this;
+    }
+} //# sourceMappingURL=GraphQLClient.js.map
+}),
+"[project]/twitter_client/node_modules/graphql-request/build/legacy/functions/request.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "parseRequestArgs",
+    ()=>parseRequestArgs,
+    "parseRequestExtendedArgs",
+    ()=>parseRequestExtendedArgs,
+    "request",
+    ()=>request
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$classes$2f$GraphQLClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/legacy/classes/GraphQLClient.js [app-client] (ecmascript)");
+;
+async function request(urlOrOptions, document, ...variablesAndRequestHeaders) {
+    const requestOptions = parseRequestExtendedArgs(urlOrOptions, document, ...variablesAndRequestHeaders);
+    const client = new __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$classes$2f$GraphQLClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GraphQLClient"](requestOptions.url);
+    return client.request({
+        ...requestOptions
+    });
+}
+const parseRequestArgs = (documentOrOptions, variables, requestHeaders)=>{
+    return documentOrOptions.document ? documentOrOptions : {
+        document: documentOrOptions,
+        variables: variables,
+        requestHeaders: requestHeaders,
+        signal: undefined
+    };
+};
+const parseRequestExtendedArgs = (urlOrOptions, document, ...variablesAndRequestHeaders)=>{
+    const [variables, requestHeaders] = variablesAndRequestHeaders;
+    return typeof urlOrOptions === `string` ? {
+        url: urlOrOptions,
+        document: document,
+        variables,
+        requestHeaders,
+        signal: undefined
+    } : urlOrOptions;
+}; //# sourceMappingURL=request.js.map
+}),
+"[project]/twitter_client/node_modules/graphql-request/build/legacy/functions/gql.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+/**
+ * Convenience passthrough template tag to get the benefits of tooling for the gql template tag. This does not actually parse the input into a GraphQL DocumentNode like graphql-tag package does. It just returns the string with any variables given interpolated. Can save you a bit of performance and having to install another package.
+ *
+ * @example
+ * ```
+ * import { gql } from 'graphql-request'
+ *
+ * await request('https://foo.bar/graphql', gql`...`)
+ * ```
+ *
+ * @remarks
+ *
+ * Several tools in the Node GraphQL ecosystem are hardcoded to specially treat any template tag named "gql". For example see this prettier issue: https://github.com/prettier/prettier/issues/4360. Using this template tag has no runtime effect beyond variable interpolation.
+ */ __turbopack_context__.s([
+    "gql",
+    ()=>gql
+]);
+const gql = (chunks, ...variables)=>{
+    return chunks.reduce((acc, chunk, index)=>`${acc}${chunk}${index in variables ? String(variables[index]) : ``}`, ``);
+}; //# sourceMappingURL=gql.js.map
+}),
+"[project]/twitter_client/node_modules/graphql-request/build/entrypoints/main.js [app-client] (ecmascript) <locals>", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__default__export__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$classes$2f$ClientError$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/legacy/classes/ClientError.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$functions$2f$request$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/legacy/functions/request.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$classes$2f$GraphQLClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/legacy/classes/GraphQLClient.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$functions$2f$batchRequests$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/legacy/functions/batchRequests.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$functions$2f$gql$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/legacy/functions/gql.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$functions$2f$rawRequest$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/legacy/functions/rawRequest.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$helpers$2f$analyzeDocument$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/graphql-request/build/legacy/helpers/analyzeDocument.js [app-client] (ecmascript)");
+;
+;
+;
+;
+;
+;
+;
+;
+const __TURBOPACK__default__export__ = __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$graphql$2d$request$2f$build$2f$legacy$2f$functions$2f$request$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["request"];
+ //# sourceMappingURL=main.js.map
+}),
+"[project]/twitter_client/node_modules/@tanstack/query-core/build/modern/queryObserver.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "QueryObserver",
+    ()=>QueryObserver
+]);
+// src/queryObserver.ts
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$focusManager$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@tanstack/query-core/build/modern/focusManager.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$notifyManager$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@tanstack/query-core/build/modern/notifyManager.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$query$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@tanstack/query-core/build/modern/query.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$subscribable$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@tanstack/query-core/build/modern/subscribable.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$thenable$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@tanstack/query-core/build/modern/thenable.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@tanstack/query-core/build/modern/utils.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$timeoutManager$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@tanstack/query-core/build/modern/timeoutManager.js [app-client] (ecmascript)");
+;
+;
+;
+;
+;
+;
+;
+var QueryObserver = class extends __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$subscribable$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Subscribable"] {
+    constructor(client, options){
+        super();
+        this.options = options;
+        this.#client = client;
+        this.#selectError = null;
+        this.#currentThenable = (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$thenable$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["pendingThenable"])();
+        this.bindMethods();
+        this.setOptions(options);
+    }
+    #client;
+    #currentQuery = void 0;
+    #currentQueryInitialState = void 0;
+    #currentResult = void 0;
+    #currentResultState;
+    #currentResultOptions;
+    #currentThenable;
+    #selectError;
+    #selectFn;
+    #selectResult;
+    // This property keeps track of the last query with defined data.
+    // It will be used to pass the previous data and query to the placeholder function between renders.
+    #lastQueryWithDefinedData;
+    #staleTimeoutId;
+    #refetchIntervalId;
+    #currentRefetchInterval;
+    #trackedProps = /* @__PURE__ */ new Set();
+    bindMethods() {
+        this.refetch = this.refetch.bind(this);
+    }
+    onSubscribe() {
+        if (this.listeners.size === 1) {
+            this.#currentQuery.addObserver(this);
+            if (shouldFetchOnMount(this.#currentQuery, this.options)) {
+                this.#executeFetch();
+            } else {
+                this.updateResult();
+            }
+            this.#updateTimers();
+        }
+    }
+    onUnsubscribe() {
+        if (!this.hasListeners()) {
+            this.destroy();
+        }
+    }
+    shouldFetchOnReconnect() {
+        return shouldFetchOn(this.#currentQuery, this.options, this.options.refetchOnReconnect);
+    }
+    shouldFetchOnWindowFocus() {
+        return shouldFetchOn(this.#currentQuery, this.options, this.options.refetchOnWindowFocus);
+    }
+    destroy() {
+        this.listeners = /* @__PURE__ */ new Set();
+        this.#clearStaleTimeout();
+        this.#clearRefetchInterval();
+        this.#currentQuery.removeObserver(this);
+    }
+    setOptions(options) {
+        const prevOptions = this.options;
+        const prevQuery = this.#currentQuery;
+        this.options = this.#client.defaultQueryOptions(options);
+        if (this.options.enabled !== void 0 && typeof this.options.enabled !== "boolean" && typeof this.options.enabled !== "function" && typeof (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resolveEnabled"])(this.options.enabled, this.#currentQuery) !== "boolean") {
+            throw new Error("Expected enabled to be a boolean or a callback that returns a boolean");
+        }
+        this.#updateQuery();
+        this.#currentQuery.setOptions(this.options);
+        if (prevOptions._defaulted && !(0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["shallowEqualObjects"])(this.options, prevOptions)) {
+            this.#client.getQueryCache().notify({
+                type: "observerOptionsUpdated",
+                query: this.#currentQuery,
+                observer: this
+            });
+        }
+        const mounted = this.hasListeners();
+        if (mounted && shouldFetchOptionally(this.#currentQuery, prevQuery, this.options, prevOptions)) {
+            this.#executeFetch();
+        }
+        this.updateResult();
+        if (mounted && (this.#currentQuery !== prevQuery || (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resolveEnabled"])(this.options.enabled, this.#currentQuery) !== (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resolveEnabled"])(prevOptions.enabled, this.#currentQuery) || (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resolveStaleTime"])(this.options.staleTime, this.#currentQuery) !== (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resolveStaleTime"])(prevOptions.staleTime, this.#currentQuery))) {
+            this.#updateStaleTimeout();
+        }
+        const nextRefetchInterval = this.#computeRefetchInterval();
+        if (mounted && (this.#currentQuery !== prevQuery || (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resolveEnabled"])(this.options.enabled, this.#currentQuery) !== (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resolveEnabled"])(prevOptions.enabled, this.#currentQuery) || nextRefetchInterval !== this.#currentRefetchInterval)) {
+            this.#updateRefetchInterval(nextRefetchInterval);
+        }
+    }
+    getOptimisticResult(options) {
+        const query = this.#client.getQueryCache().build(this.#client, options);
+        const result = this.createResult(query, options);
+        if (shouldAssignObserverCurrentProperties(this, result)) {
+            this.#currentResult = result;
+            this.#currentResultOptions = this.options;
+            this.#currentResultState = this.#currentQuery.state;
+        }
+        return result;
+    }
+    getCurrentResult() {
+        return this.#currentResult;
+    }
+    trackResult(result, onPropTracked) {
+        return new Proxy(result, {
+            get: (target, key)=>{
+                this.trackProp(key);
+                onPropTracked?.(key);
+                if (key === "promise") {
+                    this.trackProp("data");
+                    if (!this.options.experimental_prefetchInRender && this.#currentThenable.status === "pending") {
+                        this.#currentThenable.reject(new Error("experimental_prefetchInRender feature flag is not enabled"));
+                    }
+                }
+                return Reflect.get(target, key);
+            }
+        });
+    }
+    trackProp(key) {
+        this.#trackedProps.add(key);
+    }
+    getCurrentQuery() {
+        return this.#currentQuery;
+    }
+    refetch({ ...options } = {}) {
+        return this.fetch({
+            ...options
+        });
+    }
+    fetchOptimistic(options) {
+        const defaultedOptions = this.#client.defaultQueryOptions(options);
+        const query = this.#client.getQueryCache().build(this.#client, defaultedOptions);
+        return query.fetch().then(()=>this.createResult(query, defaultedOptions));
+    }
+    fetch(fetchOptions) {
+        return this.#executeFetch({
+            ...fetchOptions,
+            cancelRefetch: fetchOptions.cancelRefetch ?? true
+        }).then(()=>{
+            this.updateResult();
+            return this.#currentResult;
+        });
+    }
+    #executeFetch(fetchOptions) {
+        this.#updateQuery();
+        let promise = this.#currentQuery.fetch(this.options, fetchOptions);
+        if (!fetchOptions?.throwOnError) {
+            promise = promise.catch(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["noop"]);
+        }
+        return promise;
+    }
+    #updateStaleTimeout() {
+        this.#clearStaleTimeout();
+        const staleTime = (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resolveStaleTime"])(this.options.staleTime, this.#currentQuery);
+        if (__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isServer"] || this.#currentResult.isStale || !(0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isValidTimeout"])(staleTime)) {
+            return;
+        }
+        const time = (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["timeUntilStale"])(this.#currentResult.dataUpdatedAt, staleTime);
+        const timeout = time + 1;
+        this.#staleTimeoutId = __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$timeoutManager$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["timeoutManager"].setTimeout(()=>{
+            if (!this.#currentResult.isStale) {
+                this.updateResult();
+            }
+        }, timeout);
+    }
+    #computeRefetchInterval() {
+        return (typeof this.options.refetchInterval === "function" ? this.options.refetchInterval(this.#currentQuery) : this.options.refetchInterval) ?? false;
+    }
+    #updateRefetchInterval(nextInterval) {
+        this.#clearRefetchInterval();
+        this.#currentRefetchInterval = nextInterval;
+        if (__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isServer"] || (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resolveEnabled"])(this.options.enabled, this.#currentQuery) === false || !(0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isValidTimeout"])(this.#currentRefetchInterval) || this.#currentRefetchInterval === 0) {
+            return;
+        }
+        this.#refetchIntervalId = __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$timeoutManager$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["timeoutManager"].setInterval(()=>{
+            if (this.options.refetchIntervalInBackground || __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$focusManager$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["focusManager"].isFocused()) {
+                this.#executeFetch();
+            }
+        }, this.#currentRefetchInterval);
+    }
+    #updateTimers() {
+        this.#updateStaleTimeout();
+        this.#updateRefetchInterval(this.#computeRefetchInterval());
+    }
+    #clearStaleTimeout() {
+        if (this.#staleTimeoutId) {
+            __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$timeoutManager$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["timeoutManager"].clearTimeout(this.#staleTimeoutId);
+            this.#staleTimeoutId = void 0;
+        }
+    }
+    #clearRefetchInterval() {
+        if (this.#refetchIntervalId) {
+            __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$timeoutManager$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["timeoutManager"].clearInterval(this.#refetchIntervalId);
+            this.#refetchIntervalId = void 0;
+        }
+    }
+    createResult(query, options) {
+        const prevQuery = this.#currentQuery;
+        const prevOptions = this.options;
+        const prevResult = this.#currentResult;
+        const prevResultState = this.#currentResultState;
+        const prevResultOptions = this.#currentResultOptions;
+        const queryChange = query !== prevQuery;
+        const queryInitialState = queryChange ? query.state : this.#currentQueryInitialState;
+        const { state } = query;
+        let newState = {
+            ...state
+        };
+        let isPlaceholderData = false;
+        let data;
+        if (options._optimisticResults) {
+            const mounted = this.hasListeners();
+            const fetchOnMount = !mounted && shouldFetchOnMount(query, options);
+            const fetchOptionally = mounted && shouldFetchOptionally(query, prevQuery, options, prevOptions);
+            if (fetchOnMount || fetchOptionally) {
+                newState = {
+                    ...newState,
+                    ...(0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$query$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchState"])(state.data, query.options)
+                };
+            }
+            if (options._optimisticResults === "isRestoring") {
+                newState.fetchStatus = "idle";
+            }
+        }
+        let { error, errorUpdatedAt, status } = newState;
+        data = newState.data;
+        let skipSelect = false;
+        if (options.placeholderData !== void 0 && data === void 0 && status === "pending") {
+            let placeholderData;
+            if (prevResult?.isPlaceholderData && options.placeholderData === prevResultOptions?.placeholderData) {
+                placeholderData = prevResult.data;
+                skipSelect = true;
+            } else {
+                placeholderData = typeof options.placeholderData === "function" ? options.placeholderData(this.#lastQueryWithDefinedData?.state.data, this.#lastQueryWithDefinedData) : options.placeholderData;
+            }
+            if (placeholderData !== void 0) {
+                status = "success";
+                data = (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["replaceData"])(prevResult?.data, placeholderData, options);
+                isPlaceholderData = true;
+            }
+        }
+        if (options.select && data !== void 0 && !skipSelect) {
+            if (prevResult && data === prevResultState?.data && options.select === this.#selectFn) {
+                data = this.#selectResult;
+            } else {
+                try {
+                    this.#selectFn = options.select;
+                    data = options.select(data);
+                    data = (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["replaceData"])(prevResult?.data, data, options);
+                    this.#selectResult = data;
+                    this.#selectError = null;
+                } catch (selectError) {
+                    this.#selectError = selectError;
+                }
+            }
+        }
+        if (this.#selectError) {
+            error = this.#selectError;
+            data = this.#selectResult;
+            errorUpdatedAt = Date.now();
+            status = "error";
+        }
+        const isFetching = newState.fetchStatus === "fetching";
+        const isPending = status === "pending";
+        const isError = status === "error";
+        const isLoading = isPending && isFetching;
+        const hasData = data !== void 0;
+        const result = {
+            status,
+            fetchStatus: newState.fetchStatus,
+            isPending,
+            isSuccess: status === "success",
+            isError,
+            isInitialLoading: isLoading,
+            isLoading,
+            data,
+            dataUpdatedAt: newState.dataUpdatedAt,
+            error,
+            errorUpdatedAt,
+            failureCount: newState.fetchFailureCount,
+            failureReason: newState.fetchFailureReason,
+            errorUpdateCount: newState.errorUpdateCount,
+            isFetched: newState.dataUpdateCount > 0 || newState.errorUpdateCount > 0,
+            isFetchedAfterMount: newState.dataUpdateCount > queryInitialState.dataUpdateCount || newState.errorUpdateCount > queryInitialState.errorUpdateCount,
+            isFetching,
+            isRefetching: isFetching && !isPending,
+            isLoadingError: isError && !hasData,
+            isPaused: newState.fetchStatus === "paused",
+            isPlaceholderData,
+            isRefetchError: isError && hasData,
+            isStale: isStale(query, options),
+            refetch: this.refetch,
+            promise: this.#currentThenable,
+            isEnabled: (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resolveEnabled"])(options.enabled, query) !== false
+        };
+        const nextResult = result;
+        if (this.options.experimental_prefetchInRender) {
+            const hasResultData = nextResult.data !== void 0;
+            const isErrorWithoutData = nextResult.status === "error" && !hasResultData;
+            const finalizeThenableIfPossible = (thenable)=>{
+                if (isErrorWithoutData) {
+                    thenable.reject(nextResult.error);
+                } else if (hasResultData) {
+                    thenable.resolve(nextResult.data);
+                }
+            };
+            const recreateThenable = ()=>{
+                const pending = this.#currentThenable = nextResult.promise = (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$thenable$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["pendingThenable"])();
+                finalizeThenableIfPossible(pending);
+            };
+            const prevThenable = this.#currentThenable;
+            switch(prevThenable.status){
+                case "pending":
+                    if (query.queryHash === prevQuery.queryHash) {
+                        finalizeThenableIfPossible(prevThenable);
+                    }
+                    break;
+                case "fulfilled":
+                    if (isErrorWithoutData || nextResult.data !== prevThenable.value) {
+                        recreateThenable();
+                    }
+                    break;
+                case "rejected":
+                    if (!isErrorWithoutData || nextResult.error !== prevThenable.reason) {
+                        recreateThenable();
+                    }
+                    break;
+            }
+        }
+        return nextResult;
+    }
+    updateResult() {
+        const prevResult = this.#currentResult;
+        const nextResult = this.createResult(this.#currentQuery, this.options);
+        this.#currentResultState = this.#currentQuery.state;
+        this.#currentResultOptions = this.options;
+        if (this.#currentResultState.data !== void 0) {
+            this.#lastQueryWithDefinedData = this.#currentQuery;
+        }
+        if ((0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["shallowEqualObjects"])(nextResult, prevResult)) {
+            return;
+        }
+        this.#currentResult = nextResult;
+        const shouldNotifyListeners = ()=>{
+            if (!prevResult) {
+                return true;
+            }
+            const { notifyOnChangeProps } = this.options;
+            const notifyOnChangePropsValue = typeof notifyOnChangeProps === "function" ? notifyOnChangeProps() : notifyOnChangeProps;
+            if (notifyOnChangePropsValue === "all" || !notifyOnChangePropsValue && !this.#trackedProps.size) {
+                return true;
+            }
+            const includedProps = new Set(notifyOnChangePropsValue ?? this.#trackedProps);
+            if (this.options.throwOnError) {
+                includedProps.add("error");
+            }
+            return Object.keys(this.#currentResult).some((key)=>{
+                const typedKey = key;
+                const changed = this.#currentResult[typedKey] !== prevResult[typedKey];
+                return changed && includedProps.has(typedKey);
+            });
+        };
+        this.#notify({
+            listeners: shouldNotifyListeners()
+        });
+    }
+    #updateQuery() {
+        const query = this.#client.getQueryCache().build(this.#client, this.options);
+        if (query === this.#currentQuery) {
+            return;
+        }
+        const prevQuery = this.#currentQuery;
+        this.#currentQuery = query;
+        this.#currentQueryInitialState = query.state;
+        if (this.hasListeners()) {
+            prevQuery?.removeObserver(this);
+            query.addObserver(this);
+        }
+    }
+    onQueryUpdate() {
+        this.updateResult();
+        if (this.hasListeners()) {
+            this.#updateTimers();
+        }
+    }
+    #notify(notifyOptions) {
+        __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$notifyManager$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["notifyManager"].batch(()=>{
+            if (notifyOptions.listeners) {
+                this.listeners.forEach((listener)=>{
+                    listener(this.#currentResult);
+                });
+            }
+            this.#client.getQueryCache().notify({
+                query: this.#currentQuery,
+                type: "observerResultsUpdated"
+            });
+        });
+    }
+};
+function shouldLoadOnMount(query, options) {
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resolveEnabled"])(options.enabled, query) !== false && query.state.data === void 0 && !(query.state.status === "error" && options.retryOnMount === false);
+}
+function shouldFetchOnMount(query, options) {
+    return shouldLoadOnMount(query, options) || query.state.data !== void 0 && shouldFetchOn(query, options, options.refetchOnMount);
+}
+function shouldFetchOn(query, options, field) {
+    if ((0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resolveEnabled"])(options.enabled, query) !== false && (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resolveStaleTime"])(options.staleTime, query) !== "static") {
+        const value = typeof field === "function" ? field(query) : field;
+        return value === "always" || value !== false && isStale(query, options);
+    }
+    return false;
+}
+function shouldFetchOptionally(query, prevQuery, options, prevOptions) {
+    return (query !== prevQuery || (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resolveEnabled"])(prevOptions.enabled, query) === false) && (!options.suspense || query.state.status !== "error") && isStale(query, options);
+}
+function isStale(query, options) {
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resolveEnabled"])(options.enabled, query) !== false && query.isStaleByTime((0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resolveStaleTime"])(options.staleTime, query));
+}
+function shouldAssignObserverCurrentProperties(observer, optimisticResult) {
+    if (!(0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["shallowEqualObjects"])(observer.getCurrentResult(), optimisticResult)) {
+        return true;
+    }
+    return false;
+}
+;
+ //# sourceMappingURL=queryObserver.js.map
+}),
+"[project]/twitter_client/node_modules/@tanstack/react-query/build/modern/QueryErrorResetBoundary.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "QueryErrorResetBoundary",
+    ()=>QueryErrorResetBoundary,
+    "useQueryErrorResetBoundary",
+    ()=>useQueryErrorResetBoundary
+]);
+// src/QueryErrorResetBoundary.tsx
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/jsx-runtime.js [app-client] (ecmascript)");
+"use client";
+;
+;
+function createValue() {
+    let isReset = false;
+    return {
+        clearReset: ()=>{
+            isReset = false;
+        },
+        reset: ()=>{
+            isReset = true;
+        },
+        isReset: ()=>{
+            return isReset;
+        }
+    };
+}
+var QueryErrorResetBoundaryContext = __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createContext"](createValue());
+var useQueryErrorResetBoundary = ()=>__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useContext"](QueryErrorResetBoundaryContext);
+var QueryErrorResetBoundary = ({ children })=>{
+    const [value] = __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"]({
+        "QueryErrorResetBoundary.useState": ()=>createValue()
+    }["QueryErrorResetBoundary.useState"]);
+    return /* @__PURE__ */ (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsx"])(QueryErrorResetBoundaryContext.Provider, {
+        value,
+        children: typeof children === "function" ? children(value) : children
+    });
+};
+;
+ //# sourceMappingURL=QueryErrorResetBoundary.js.map
+}),
+"[project]/twitter_client/node_modules/@tanstack/react-query/build/modern/errorBoundaryUtils.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "ensurePreventErrorBoundaryRetry",
+    ()=>ensurePreventErrorBoundaryRetry,
+    "getHasError",
+    ()=>getHasError,
+    "useClearResetErrorBoundary",
+    ()=>useClearResetErrorBoundary
+]);
+// src/errorBoundaryUtils.ts
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@tanstack/query-core/build/modern/utils.js [app-client] (ecmascript)");
+"use client";
+;
+;
+var ensurePreventErrorBoundaryRetry = (options, errorResetBoundary, query)=>{
+    const throwOnError = query?.state.error && typeof options.throwOnError === "function" ? (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["shouldThrowError"])(options.throwOnError, [
+        query.state.error,
+        query
+    ]) : options.throwOnError;
+    if (options.suspense || options.experimental_prefetchInRender || throwOnError) {
+        if (!errorResetBoundary.isReset()) {
+            options.retryOnMount = false;
+        }
+    }
+};
+var useClearResetErrorBoundary = (errorResetBoundary)=>{
+    __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"]({
+        "useClearResetErrorBoundary.useEffect": ()=>{
+            errorResetBoundary.clearReset();
+        }
+    }["useClearResetErrorBoundary.useEffect"], [
+        errorResetBoundary
+    ]);
+};
+var getHasError = ({ result, errorResetBoundary, throwOnError, query, suspense })=>{
+    return result.isError && !errorResetBoundary.isReset() && !result.isFetching && query && (suspense && result.data === void 0 || (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["shouldThrowError"])(throwOnError, [
+        result.error,
+        query
+    ]));
+};
+;
+ //# sourceMappingURL=errorBoundaryUtils.js.map
+}),
+"[project]/twitter_client/node_modules/@tanstack/react-query/build/modern/IsRestoringProvider.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "IsRestoringProvider",
+    ()=>IsRestoringProvider,
+    "useIsRestoring",
+    ()=>useIsRestoring
+]);
+// src/IsRestoringProvider.ts
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+"use client";
+;
+var IsRestoringContext = __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createContext"](false);
+var useIsRestoring = ()=>__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useContext"](IsRestoringContext);
+var IsRestoringProvider = IsRestoringContext.Provider;
+;
+ //# sourceMappingURL=IsRestoringProvider.js.map
+}),
+"[project]/twitter_client/node_modules/@tanstack/react-query/build/modern/suspense.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "defaultThrowOnError",
+    ()=>defaultThrowOnError,
+    "ensureSuspenseTimers",
+    ()=>ensureSuspenseTimers,
+    "fetchOptimistic",
+    ()=>fetchOptimistic,
+    "shouldSuspend",
+    ()=>shouldSuspend,
+    "willFetch",
+    ()=>willFetch
+]);
+// src/suspense.ts
+var defaultThrowOnError = (_error, query)=>query.state.data === void 0;
+var ensureSuspenseTimers = (defaultedOptions)=>{
+    if (defaultedOptions.suspense) {
+        const MIN_SUSPENSE_TIME_MS = 1e3;
+        const clamp = (value)=>value === "static" ? value : Math.max(value ?? MIN_SUSPENSE_TIME_MS, MIN_SUSPENSE_TIME_MS);
+        const originalStaleTime = defaultedOptions.staleTime;
+        defaultedOptions.staleTime = typeof originalStaleTime === "function" ? (...args)=>clamp(originalStaleTime(...args)) : clamp(originalStaleTime);
+        if (typeof defaultedOptions.gcTime === "number") {
+            defaultedOptions.gcTime = Math.max(defaultedOptions.gcTime, MIN_SUSPENSE_TIME_MS);
+        }
+    }
+};
+var willFetch = (result, isRestoring)=>result.isLoading && result.isFetching && !isRestoring;
+var shouldSuspend = (defaultedOptions, result)=>defaultedOptions?.suspense && result.isPending;
+var fetchOptimistic = (defaultedOptions, observer, errorResetBoundary)=>observer.fetchOptimistic(defaultedOptions).catch(()=>{
+        errorResetBoundary.clearReset();
+    });
+;
+ //# sourceMappingURL=suspense.js.map
+}),
+"[project]/twitter_client/node_modules/@tanstack/react-query/build/modern/useBaseQuery.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "useBaseQuery",
+    ()=>useBaseQuery
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
+// src/useBaseQuery.ts
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@tanstack/query-core/build/modern/utils.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$notifyManager$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@tanstack/query-core/build/modern/notifyManager.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryClientProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryErrorResetBoundary$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@tanstack/react-query/build/modern/QueryErrorResetBoundary.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$errorBoundaryUtils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@tanstack/react-query/build/modern/errorBoundaryUtils.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$IsRestoringProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@tanstack/react-query/build/modern/IsRestoringProvider.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$suspense$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@tanstack/react-query/build/modern/suspense.js [app-client] (ecmascript)");
+"use client";
+;
+;
+;
+;
+;
+;
+;
+function useBaseQuery(options, Observer, queryClient) {
+    if ("TURBOPACK compile-time truthy", 1) {
+        if (typeof options !== "object" || Array.isArray(options)) {
+            throw new Error('Bad argument type. Starting with v5, only the "Object" form is allowed when calling query related functions. Please use the error stack to find the culprit call. More info here: https://tanstack.com/query/latest/docs/react/guides/migrating-to-v5#supports-a-single-signature-one-object');
+        }
+    }
+    const isRestoring = (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$IsRestoringProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useIsRestoring"])();
+    const errorResetBoundary = (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryErrorResetBoundary$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQueryErrorResetBoundary"])();
+    const client = (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryClientProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQueryClient"])(queryClient);
+    const defaultedOptions = client.defaultQueryOptions(options);
+    client.getDefaultOptions().queries?._experimental_beforeQuery?.(defaultedOptions);
+    const query = client.getQueryCache().get(defaultedOptions.queryHash);
+    if ("TURBOPACK compile-time truthy", 1) {
+        if (!defaultedOptions.queryFn) {
+            console.error(`[${defaultedOptions.queryHash}]: No queryFn was passed as an option, and no default queryFn was found. The queryFn parameter is only optional when using a default queryFn. More info here: https://tanstack.com/query/latest/docs/framework/react/guides/default-query-function`);
+        }
+    }
+    defaultedOptions._optimisticResults = isRestoring ? "isRestoring" : "optimistic";
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$suspense$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ensureSuspenseTimers"])(defaultedOptions);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$errorBoundaryUtils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ensurePreventErrorBoundaryRetry"])(defaultedOptions, errorResetBoundary, query);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$errorBoundaryUtils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useClearResetErrorBoundary"])(errorResetBoundary);
+    const isNewCacheEntry = !client.getQueryCache().get(defaultedOptions.queryHash);
+    const [observer] = __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"]({
+        "useBaseQuery.useState": ()=>new Observer(client, defaultedOptions)
+    }["useBaseQuery.useState"]);
+    const result = observer.getOptimisticResult(defaultedOptions);
+    const shouldSubscribe = !isRestoring && options.subscribed !== false;
+    __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSyncExternalStore"](__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"]({
+        "useBaseQuery.useSyncExternalStore.useCallback": (onStoreChange)=>{
+            const unsubscribe = shouldSubscribe ? observer.subscribe(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$notifyManager$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["notifyManager"].batchCalls(onStoreChange)) : __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["noop"];
+            observer.updateResult();
+            return unsubscribe;
+        }
+    }["useBaseQuery.useSyncExternalStore.useCallback"], [
+        observer,
+        shouldSubscribe
+    ]), {
+        "useBaseQuery.useSyncExternalStore": ()=>observer.getCurrentResult()
+    }["useBaseQuery.useSyncExternalStore"], {
+        "useBaseQuery.useSyncExternalStore": ()=>observer.getCurrentResult()
+    }["useBaseQuery.useSyncExternalStore"]);
+    __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"]({
+        "useBaseQuery.useEffect": ()=>{
+            observer.setOptions(defaultedOptions);
+        }
+    }["useBaseQuery.useEffect"], [
+        defaultedOptions,
+        observer
+    ]);
+    if ((0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$suspense$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["shouldSuspend"])(defaultedOptions, result)) {
+        throw (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$suspense$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchOptimistic"])(defaultedOptions, observer, errorResetBoundary);
+    }
+    if ((0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$errorBoundaryUtils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getHasError"])({
+        result,
+        errorResetBoundary,
+        throwOnError: defaultedOptions.throwOnError,
+        query,
+        suspense: defaultedOptions.suspense
+    })) {
+        throw result.error;
+    }
+    ;
+    client.getDefaultOptions().queries?._experimental_afterQuery?.(defaultedOptions, result);
+    if (defaultedOptions.experimental_prefetchInRender && !__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isServer"] && (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$suspense$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["willFetch"])(result, isRestoring)) {
+        const promise = isNewCacheEntry ? // Fetch immediately on render in order to ensure `.promise` is resolved even if the component is unmounted
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$suspense$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchOptimistic"])(defaultedOptions, observer, errorResetBoundary) : // subscribe to the "cache promise" so that we can finalize the currentThenable once data comes in
+        query?.promise;
+        promise?.catch(__TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$utils$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["noop"]).finally(()=>{
+            observer.updateResult();
+        });
+    }
+    return !defaultedOptions.notifyOnChangeProps ? observer.trackResult(result) : result;
+}
+;
+ //# sourceMappingURL=useBaseQuery.js.map
+}),
+"[project]/twitter_client/node_modules/@tanstack/react-query/build/modern/useQuery.js [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "useQuery",
+    ()=>useQuery
+]);
+// src/useQuery.ts
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$queryObserver$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@tanstack/query-core/build/modern/queryObserver.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useBaseQuery$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/twitter_client/node_modules/@tanstack/react-query/build/modern/useBaseQuery.js [app-client] (ecmascript)");
+"use client";
+;
+;
+function useQuery(options, queryClient) {
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useBaseQuery$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useBaseQuery"])(options, __TURBOPACK__imported__module__$5b$project$5d2f$twitter_client$2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$queryObserver$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["QueryObserver"], queryClient);
+}
+;
+ //# sourceMappingURL=useQuery.js.map
+}),
+]);
+
+//# sourceMappingURL=b1b00_110a2450._.js.map

@@ -1,12 +1,11 @@
 //resolvers for all token
 //1st resolver : you'll get a token
-import axios from "axios";  //for api calling
+import axios from "axios";
 import { GraphQLError } from "graphql";
 import { prismaClient } from "../../src/clients/db";
 import JWTService from "../../src/services/jwt";
 import type { GraphqlContext } from "../../src/interfaces";
 
-//make interface to mimic the data 
 interface GoogleTokenResult{
     iss?: string;
     nbf?: string;
@@ -34,64 +33,56 @@ const queries = {
             });
         }
 
-        const googleToken = token;
-        //make url 
-        const googleOauthURL = new URL('https://oauth2.googleapis.com/tokeninfo')
-        //set the id_token ad google token in url
-        googleOauthURL.searchParams.set('id_token', googleToken)
-        
-        let data: GoogleTokenResult;
-        try {
-            //make request to particular url 
-            const response = await axios.get<GoogleTokenResult>(googleOauthURL.toString(), {
-                responseType: 'json'
-            });
-            data = response.data;
-        } catch (error) {
-            if (axios.isAxiosError(error) && error.response?.status === 400) {
-                throw new GraphQLError("Invalid or expired Google token", {
-                    extensions: { code: "UNAUTHENTICATED" },
-                });
-            }
+        let googleUserInfo: {
+            email: string;
+            given_name: string;
+            family_name?: string;
+            picture?: string;
+        };
 
+        try {
+            const userInfoResponse = await axios.get(
+                'https://www.googleapis.com/oauth2/v3/userinfo',
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+            googleUserInfo = userInfoResponse.data;
+            console.log("Google userinfo:", googleUserInfo);
+        } catch (e) {
             throw new GraphQLError("Failed to verify Google token", {
-                extensions: { code: "INTERNAL_SERVER_ERROR" },
+                extensions: { code: "UNAUTHENTICATED" },
             });
         }
 
-        if (!data?.email) {
+        if (!googleUserInfo?.email) {
             throw new GraphQLError("Google account email not available", {
                 extensions: { code: "BAD_USER_INPUT" },
             });
         }
 
         const userInDb = await prismaClient.user.upsert({
-            where: { email: data.email },
+            where: { email: googleUserInfo.email },
             update: {
-                firstName: data.given_name,
-                lastName: data.family_name,
-                profileImageURL: data.picture,
+                firstName: googleUserInfo.given_name,
+                lastName: googleUserInfo.family_name ?? null,
+                profileImageURL: googleUserInfo.picture ?? null,
             },
             create: {
-                email: data.email,
-                firstName: data.given_name,
-                lastName: data.family_name,
-                profileImageURL: data.picture,
+                email: googleUserInfo.email,
+                firstName: googleUserInfo.given_name,
+                lastName: googleUserInfo.family_name ?? null,
+                profileImageURL: googleUserInfo.picture ?? null,
             },
         });
 
         const userToken = JWTService.generateTokenForUser(userInDb);
-
-
         return userToken;
     },
 
     getCurrentUser: async (parent: any, args: any, ctx: GraphqlContext) => {
         console.log(ctx);
-        const id = ctx.user?.id
+        const id = ctx.user?.id;
         if (!id) return null;
-        
-        const user = await prismaClient.user.findUnique({ where: { id } })
+        const user = await prismaClient.user.findUnique({ where: { id } });
         return user;
     },
 };
