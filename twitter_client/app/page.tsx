@@ -5,7 +5,11 @@ import { GoBell, GoHome, GoSearch } from "react-icons/go";
 import { BiEnvelope } from "react-icons/bi";
 import { SlUserFollow } from "react-icons/sl";
 import { CgMoreO } from "react-icons/cg";
-import React from "react";
+import { MdOutlineGifBox } from "react-icons/md";
+import { CiImageOn } from "react-icons/ci";
+import { BiPoll } from "react-icons/bi";
+import { BsEmojiSmile } from "react-icons/bs";
+import React, { useCallback } from "react";
 import { Grok } from "@lobehub/icons";
 import FeedCard from "@/components/FeedCard/page";
 import { toast } from "react-hot-toast";
@@ -34,7 +38,19 @@ const sideBarMenuItems: TwitterSidebarButton[] = [
 export default function Home() {
   const { user } = useCurrentUser();
   const queryClient = useQueryClient();
-  console.log(user);
+  
+  //to able to get images from device storage
+  const handleSelectImage = useCallback(() => {
+    const input = document.createElement('input'); //creates an input tag 
+    input.setAttribute('type', 'file'); //input of type file
+    input.setAttribute('accept', 'image/*'); //accept only image 
+    input.click();
+  }, []);
+
+  const handleSelectGifOnline = () => {
+  // Example: open GIPHY search in a modal
+  window.open("https://giphy.com", "_blank");
+};
 
   const handleLoginWithGoogle = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
@@ -121,11 +137,25 @@ export default function Home() {
                   rows={3}
                   placeholder="What's happening?"
                 />
-                <div className="flex justify-end mt-2">
-                  <button className="bg-gray-400 text-black font-semibold rounded-full px-5 py-2 transition-all">
-                    Post
-                  </button>
-                </div>
+                <div className="flex justify-between items-center mt-2">
+                {/* Left side: icons */}
+                  <div className="flex space-x-5 ">
+                    <CiImageOn
+                      onClick={handleSelectImage}
+                      className="text-xl text-blue-400 cursor-pointer rounded-full hover:bg-blue-400/20  transition-all" />
+                    
+                    <MdOutlineGifBox
+                      onClick={handleSelectGifOnline}
+                      className="text-xl text-blue-400 cursor-pointer rounded-full hover:bg-blue-400/20 transition-all" />
+                    <BiPoll className="text-xl text-blue-400 cursor-pointer rounded-full hover:bg-blue-400/20 transition-all" />
+                    <BsEmojiSmile className="text-xl text-blue-400 cursor-pointer rounded-full hover:bg-blue-400/20 transition-all" />
+                  </div>
+
+                {/* Right side: button */}
+                <button className="bg-gray-400 text-black font-semibold rounded-full px-5 py-2 cursor-pointer transition-all">
+                  Post
+                </button>
+              </div>
               </div>
             </div>
           </div>
