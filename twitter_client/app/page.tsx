@@ -9,9 +9,10 @@ import { MdOutlineGifBox } from "react-icons/md";
 import { CiImageOn } from "react-icons/ci";
 import { BiPoll } from "react-icons/bi";
 import { BsEmojiSmile } from "react-icons/bs";
-import React, { useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { Grok } from "@lobehub/icons";
-import FeedCard from "@/components/FeedCard/page";
+import FeedCard from "@/app/components/FeedCard/page";
+import GifModal from "@/app/components/Modals/GifModal";
 import { toast } from "react-hot-toast";
 import { graphqlClient } from "@/clients/api";
 import { verifygoogleTokenUserQuery } from "@/graphql/query/user";
@@ -38,19 +39,21 @@ const sideBarMenuItems: TwitterSidebarButton[] = [
 export default function Home() {
   const { user } = useCurrentUser();
   const queryClient = useQueryClient();
-  
-  //to able to get images from device storage
+
+  // to able to get images from device storage
   const handleSelectImage = useCallback(() => {
-    const input = document.createElement('input'); //creates an input tag 
-    input.setAttribute('type', 'file'); //input of type file
-    input.setAttribute('accept', 'image/*'); //accept only image 
+    const input = document.createElement("input"); // creates an input tag
+    input.setAttribute("type", "file"); // input of type file
+    input.setAttribute("accept", "image/*"); // accept only image
     input.click();
   }, []);
 
-  const handleSelectGifOnline = () => {
-  // Example: open GIPHY search in a modal
-  window.open("https://giphy.com", "_blank");
-};
+  // gif Modal for input feed
+  const [showGifModal, setShowGifModal] = useState(false);
+  const handleGifSelect = useCallback((gifUrl: string) => {
+    console.log("GIF selected:", gifUrl);
+    // later to attach this gifUrl to the tweet before posting
+  }, []);
 
   const handleLoginWithGoogle = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
@@ -138,24 +141,25 @@ export default function Home() {
                   placeholder="What's happening?"
                 />
                 <div className="flex justify-between items-center mt-2">
-                {/* Left side: icons */}
-                  <div className="flex space-x-5 ">
+                  {/* Left side: icons */}
+                  <div className="flex space-x-5">
                     <CiImageOn
                       onClick={handleSelectImage}
-                      className="text-xl text-blue-400 cursor-pointer rounded-full hover:bg-blue-400/20  transition-all" />
-                    
+                      className="text-xl text-blue-400 cursor-pointer rounded-full hover:bg-blue-400/20 transition-all"
+                    />
                     <MdOutlineGifBox
-                      onClick={handleSelectGifOnline}
-                      className="text-xl text-blue-400 cursor-pointer rounded-full hover:bg-blue-400/20 transition-all" />
+                      onClick={() => setShowGifModal(true)}
+                      className="text-xl text-blue-400 cursor-pointer rounded-full hover:bg-blue-400/20 transition-all"
+                    />
                     <BiPoll className="text-xl text-blue-400 cursor-pointer rounded-full hover:bg-blue-400/20 transition-all" />
                     <BsEmojiSmile className="text-xl text-blue-400 cursor-pointer rounded-full hover:bg-blue-400/20 transition-all" />
                   </div>
 
-                {/* Right side: button */}
-                <button className="bg-gray-400 text-black font-semibold rounded-full px-5 py-2 cursor-pointer transition-all">
-                  Post
-                </button>
-              </div>
+                  {/* Right side: button */}
+                  <button className="bg-gray-400 text-black font-semibold rounded-full px-5 py-2 cursor-pointer transition-all">
+                    Post
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -180,6 +184,15 @@ export default function Home() {
         </div>
 
       </div>
+
+      {/* GIF Modal - outside grid so fixed centering works correctly */}
+      {showGifModal && (
+        <GifModal
+          onClose={() => setShowGifModal(false)}
+          onSelect={handleGifSelect}
+        />
+      )}
+
     </div>
   );
 }
