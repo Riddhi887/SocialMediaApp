@@ -14,6 +14,7 @@ import { Grok } from "@lobehub/icons";
 import FeedCard from "@/app/components/FeedCard/page";
 import GifModal from "@/app/components/Modals/GifModal";
 import PollModal from "@/app/components/Modals/PollModal";
+import EmojiModal from "@/app/components/Modals/EmojiModal";
 import { toast } from "react-hot-toast";
 import { graphqlClient } from "@/clients/api";
 import { verifygoogleTokenUserQuery } from "@/graphql/query/user";
@@ -61,6 +62,15 @@ export default function Home() {
   const handlePollSubmit = useCallback((poll: { question: string; options: string[]; duration: string }) => {
     console.log("Poll created:", poll);
      // later to attach this poll to the tweet before posting
+  }, []);
+
+  //emoji modal for input feed
+  const [showEmojiModal, setShowEmojiModal] = useState(false);
+  const [tweetText, setTweetText] = useState(""); // stores what user types and emojis appended afterwars as well vice versa
+
+  const handleEmojiSelect = useCallback((emoji: string) => {
+    setTweetText((prev) => prev + emoji); // prev = existing text, adds emoji at the end
+    setShowEmojiModal(false);
   }, []);
 
   const handleLoginWithGoogle = useGoogleLogin({
@@ -144,10 +154,13 @@ export default function Home() {
               </div>
               <div className="flex-1">
                 <textarea
+                  value={tweetText}                                 
+                  onChange={(e) => setTweetText(e.target.value)}    
                   className="w-full bg-transparent outline-none text-white text-xl resize-none placeholder-gray-500 border-b-1 border-gray-500"
                   rows={3}
                   placeholder="What's happening?"
                 />
+
                 <div className="flex justify-between items-center mt-2">
                   {/* Left side: icons */}
                   <div className="flex space-x-5">
@@ -164,7 +177,10 @@ export default function Home() {
                       className="text-xl text-blue-400 cursor-pointer rounded-full hover:bg-blue-400/20 transition-all"
                     />
                     
-                    <BsEmojiSmile className="text-xl text-blue-400 cursor-pointer rounded-full hover:bg-blue-400/20 transition-all" />
+                   <BsEmojiSmile
+                      onClick={() => setShowEmojiModal(true)}
+                      className="text-xl text-blue-400 cursor-pointer rounded-full hover:bg-blue-400/20 transition-all"
+                    />
                   </div>
 
                   {/* Right side: button */}
@@ -211,6 +227,14 @@ export default function Home() {
           onSubmit={handlePollSubmit} />
       )}
 
+      {/* Emoji Modal - outside grid so positioning works correctly */}
+      {showEmojiModal && (
+        <EmojiModal
+          onClose={() => setShowEmojiModal(false)}
+          onEmojiClick={handleEmojiSelect}
+        />
+      )}
+      
     </div>
   );
 }

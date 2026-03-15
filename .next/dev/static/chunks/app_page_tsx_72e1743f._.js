@@ -14,9 +14,10 @@
   "static/chunks/node_modules_react-icons_io_index_mjs_7f31b177._.js",
   "static/chunks/node_modules_react-icons_fi_index_mjs_0a78009b._.js",
   "static/chunks/node_modules_react-icons_lib_844c6c50._.js",
+  "static/chunks/node_modules_emoji-picker-react_dist_emoji-picker-react_esm_95c26468.js",
   "static/chunks/node_modules_graphql_016d5f36._.js",
-  "static/chunks/node_modules_637547db._.js",
-  "static/chunks/_c950350a._.js"
+  "static/chunks/node_modules_93a4d5ec._.js",
+  "static/chunks/_473a3b7c._.js"
 ],
     source: "dynamic"
 });
