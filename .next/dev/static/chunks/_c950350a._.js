@@ -316,6 +316,230 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
+"[project]/app/components/Modals/PollModal.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>PollModal
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
+"use client";
+;
+function PollModal({ onClose, onSubmit }) {
+    _s();
+    //use useState
+    const [question, setQuestion] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(""); //stores the question that user types
+    const [options, setOptions] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]); //store the options that user types
+    const [duration, setDuration] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("1 Day"); //stores the duration (default 1 day)
+    //handler functions
+    //add new option
+    const addOptions = ()=>{
+        if (options.length < 4) {
+            setOptions([
+                ...options,
+                ""
+            ]); //spread or copy existing options and add new
+        }
+    };
+    //update option if user edits
+    const updateOption = (index, value)=>{
+        const updated = [
+            ...options
+        ]; // copy current options array
+        updated[index] = value; // update only the one user typed in
+        setOptions(updated); // save back to state
+    };
+    //remove option
+    const removeOption = (index)=>{
+        if (options.length <= 2) return; // cant go below 2 options
+        setOptions(options.filter((_, i)=>i == index));
+    // filter = keeps everything EXCEPT the one at this index
+    // _ means dont care about the value, only the index i
+    };
+    //submit the poll (send data to page.tsx of app folder)
+    const handleSubmit = ()=>{
+        if (!question.trim()) return; // stop if question is empty
+        if (!options.some((o)=>o.trim())) return; // stop if any option is empty
+        onSubmit({
+            question,
+            options,
+            duration
+        }); // send data to page.tsx
+        onClose(); // close modal
+    };
+    //Frontend
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "fixed inset-0 z-50 flex items-center justify-center bg-black/60",
+        onClick: onClose,
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "bg-black border border-slate-700 rounded-2xl w-[500px] p-5",
+            onClick: (e)=>e.stopPropagation(),
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "flex justify-between items-center mb-4",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                            className: "text-white font-bold text-lg",
+                            children: "Create Poll"
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/Modals/PollModal.tsx",
+                            lineNumber: 63,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            onClick: onClose,
+                            className: "text-white hover:text-gray-400 text-xl",
+                            children: " ✕ "
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/Modals/PollModal.tsx",
+                            lineNumber: 66,
+                            columnNumber: 21
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/app/components/Modals/PollModal.tsx",
+                    lineNumber: 62,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                    type: "text",
+                    value: question,
+                    onChange: (e)=>setQuestion(e.target.value),
+                    placeholder: "Ask a question",
+                    className: "w-full bg-slate-800 text-white rounded-xl px-4 py-3 outline-none border border-slate-600 mb-4"
+                }, void 0, false, {
+                    fileName: "[project]/app/components/Modals/PollModal.tsx",
+                    lineNumber: 70,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "flex flex-col gap-2 mb-3",
+                    children: options.map((option, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: " flex gap-2 items-center",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                    type: "text",
+                                    value: option,
+                                    onChange: (e)=>updateOption(index, e.target.value),
+                                    placeholder: `Choice ${index + 1}`,
+                                    className: "flex-1 bg-slate-800 text-white rounded-xl px-4 py-2 outline-none border border-slate-600"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/components/Modals/PollModal.tsx",
+                                    lineNumber: 82,
+                                    columnNumber: 29
+                                }, this),
+                                options.length > 2 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    onClick: ()=>removeOption(index),
+                                    className: "text-gray-400 hover:text-red-400 text-lg",
+                                    children: " ✕ "
+                                }, void 0, false, {
+                                    fileName: "[project]/app/components/Modals/PollModal.tsx",
+                                    lineNumber: 92,
+                                    columnNumber: 29
+                                }, this)
+                            ]
+                        }, index, true, {
+                            fileName: "[project]/app/components/Modals/PollModal.tsx",
+                            lineNumber: 81,
+                            columnNumber: 25
+                        }, this))
+                }, void 0, false, {
+                    fileName: "[project]/app/components/Modals/PollModal.tsx",
+                    lineNumber: 79,
+                    columnNumber: 17
+                }, this),
+                options.length < 4 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                    onClick: addOptions,
+                    className: "text-blue-400 hover:underline text-sm mb-4",
+                    children: " + Add "
+                }, void 0, false, {
+                    fileName: "[project]/app/components/Modals/PollModal.tsx",
+                    lineNumber: 100,
+                    columnNumber: 19
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "flex items-center gap-3 mb-5",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                            className: "text-white text-sm",
+                            children: "Poll length:"
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/Modals/PollModal.tsx",
+                            lineNumber: 105,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                            value: duration,
+                            onChange: (e)=>setDuration(e.target.value),
+                            className: "bg-slate-800 text-white border border-slate-600 rounded-lg px-3 py-1 outline-none",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                    children: "1 Day"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/components/Modals/PollModal.tsx",
+                                    lineNumber: 110,
+                                    columnNumber: 25
+                                }, this),
+                                "   ",
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                    children: "2 Days"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/components/Modals/PollModal.tsx",
+                                    lineNumber: 111,
+                                    columnNumber: 25
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                    children: "3 Days"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/components/Modals/PollModal.tsx",
+                                    lineNumber: 112,
+                                    columnNumber: 25
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/app/components/Modals/PollModal.tsx",
+                            lineNumber: 106,
+                            columnNumber: 21
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/app/components/Modals/PollModal.tsx",
+                    lineNumber: 104,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                    onClick: handleSubmit,
+                    className: "w-full bg-white hover:bg-gray-300 text-black font-semibold rounded-full py-2 cursor-pointer transition-all",
+                    children: "Add Poll"
+                }, void 0, false, {
+                    fileName: "[project]/app/components/Modals/PollModal.tsx",
+                    lineNumber: 117,
+                    columnNumber: 17
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/app/components/Modals/PollModal.tsx",
+            lineNumber: 60,
+            columnNumber: 13
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/app/components/Modals/PollModal.tsx",
+        lineNumber: 58,
+        columnNumber: 9
+    }, this);
+}
+_s(PollModal, "xvh7Yh4YPCJRbs/Uu/ZA+YaWNGA=");
+_c = PollModal;
+var _c;
+__turbopack_context__.k.register(_c, "PollModal");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
 "[project]/clients/api.ts [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
@@ -634,6 +858,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$lobehub$2f$icons$2f$es$2f$Grok$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grok$3e$__ = __turbopack_context__.i("[project]/node_modules/@lobehub/icons/es/Grok/index.js [app-client] (ecmascript) <export default as Grok>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$FeedCard$2f$page$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/components/FeedCard/page.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$Modals$2f$GifModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/components/Modals/GifModal.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$Modals$2f$PollModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/components/Modals/PollModal.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-hot-toast/dist/index.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$clients$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/clients/api.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$graphql$2f$query$2f$user$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/graphql/query/user.ts [app-client] (ecmascript)");
@@ -643,6 +868,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$o
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
 ;
 ;
 ;
@@ -1066,6 +1292,14 @@ function Home() {
                 fileName: "[project]/app/page.tsx",
                 lineNumber: 201,
                 columnNumber: 9
+            }, this),
+            showPollModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$Modals$2f$PollModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                onClose: ()=>setShowPollModal(false),
+                onSubmit: handlePollSubmit
+            }, void 0, false, {
+                fileName: "[project]/app/page.tsx",
+                lineNumber: 209,
+                columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
@@ -1090,4 +1324,4 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 }),
 ]);
 
-//# sourceMappingURL=_348f0d97._.js.map
+//# sourceMappingURL=_c950350a._.js.map

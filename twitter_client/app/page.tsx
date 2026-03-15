@@ -13,6 +13,7 @@ import React, { useState, useCallback } from "react";
 import { Grok } from "@lobehub/icons";
 import FeedCard from "@/app/components/FeedCard/page";
 import GifModal from "@/app/components/Modals/GifModal";
+import PollModal from "@/app/components/Modals/PollModal";
 import { toast } from "react-hot-toast";
 import { graphqlClient } from "@/clients/api";
 import { verifygoogleTokenUserQuery } from "@/graphql/query/user";
@@ -53,6 +54,13 @@ export default function Home() {
   const handleGifSelect = useCallback((gifUrl: string) => {
     console.log("GIF selected:", gifUrl);
     // later to attach this gifUrl to the tweet before posting
+  }, []);
+
+  //poll modal for input feed
+  const [showPollModal, setShowPollModal] = useState(false);
+  const handlePollSubmit = useCallback((poll: { question: string; options: string[]; duration: string }) => {
+    console.log("Poll created:", poll);
+     // later to attach this poll to the tweet before posting
   }, []);
 
   const handleLoginWithGoogle = useGoogleLogin({
@@ -151,7 +159,11 @@ export default function Home() {
                       onClick={() => setShowGifModal(true)}
                       className="text-xl text-blue-400 cursor-pointer rounded-full hover:bg-blue-400/20 transition-all"
                     />
-                    <BiPoll className="text-xl text-blue-400 cursor-pointer rounded-full hover:bg-blue-400/20 transition-all" />
+                   <BiPoll
+                      onClick={() => setShowPollModal(true)}
+                      className="text-xl text-blue-400 cursor-pointer rounded-full hover:bg-blue-400/20 transition-all"
+                    />
+                    
                     <BsEmojiSmile className="text-xl text-blue-400 cursor-pointer rounded-full hover:bg-blue-400/20 transition-all" />
                   </div>
 
@@ -185,12 +197,18 @@ export default function Home() {
 
       </div>
 
-      {/* GIF Modal - outside grid so fixed centering works correctly */}
       {showGifModal && (
         <GifModal
           onClose={() => setShowGifModal(false)}
           onSelect={handleGifSelect}
         />
+      )}
+
+      {/*Poll Modal - outside grid so fixed centering works correctly */}
+      {showPollModal && (
+        <PollModal
+          onClose={() => setShowPollModal(false)}
+          onSubmit={handlePollSubmit} />
       )}
 
     </div>
